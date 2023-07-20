@@ -4,5 +4,25 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- Engine engine = new Engine() -->
+	
+	<bean class="com.iu.car.Engine" id="engine">
+		<!-- setter : property -->
 		
+		<!-- engine.setFuel("GAS") -->
+		<property name="fuel" value="GAS"></property>
+		<!-- engine.setHp(20) -->
+		<property name="hp" value="20"></property>	
+		<property name="gitong" value="8"></property>
+	</bean>
+	
+	<bean class="com.iu.car.Car" id="car">
+		<!-- 매개변수명으로 구분 -->
+<!-- 		<constructor-arg name="name" value="BMW"></constructor-arg>
+		<constructor-arg name="engine" ref="engine"></constructor-arg> -->
+		
+		<!-- 매개변수의 type으로 구분 -->
+		<constructor-arg type="java.lang.String" value="BMW"></constructor-arg>
+		<constructor-arg type="com.iu.car.Engine" ref="8"></constructor-arg>
+	</bean>	
 </beans>
