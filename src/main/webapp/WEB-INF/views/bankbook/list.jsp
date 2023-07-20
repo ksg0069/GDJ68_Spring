@@ -29,7 +29,7 @@
 			<c:forEach items="${list}" var="d" varStatus="i"> <!-- 서버에서 보낸 arrylist를(콜렉션 계열) items에 넣는다 , items의 갯수만큼 꺼내서 돌림 var=d->dto의미  -->
 			
 				 <tr>
-					<td ><a class="text-decoration-none" href="./detail.do?bookNum=${d.bookNum}">${d.bookName}</a></td>	
+					<td ><a class="text-decoration-none" href="./detail?bookNum=${d.bookNum}">${d.bookName}</a></td>	
 					<td> ${d.bookRate} ${i.index } </td>
 						 
 	 			</tr>
@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 	
-	<a class="btn btn-danger" href="./add.do"> 상품등록 </a>
+	<a class="btn btn-danger" href="./add"> 상품등록 </a>
 	</section>
 	
 <%-- 	<c:forEach begin="1" end="10" step="2" var="num"> <!--  증가만 됨 -->

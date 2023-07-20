@@ -12,24 +12,24 @@ public class BankBookController {
 	@Autowired // 의존성있는 멤버변수 주입 
 	private BankBookService bankBookService;
 	
-	@RequestMapping(value="/list", method = RequestMethod.GET)
+	@RequestMapping(value="list", method = RequestMethod.GET)
 	public String getList() throws Exception{
 		System.out.println("list");
-		bankBookService.service();
+		
 		
 		return "bankbook/list";
 		
 	}
 	
-	@RequestMapping(value="/detail")
-	public String getDtail() throws Exception{
+	@RequestMapping(value="detail", method = RequestMethod.GET)
+	public String getDetail(BankBookDTO  bankBookDTO) throws Exception{
 		System.out.println("detail");
-		
+		bankBookService.getDetail(bankBookDTO);
 		return "bankbook/detail";
 		
 	}
 	
-	@RequestMapping(value="/add")
+	@RequestMapping(value="add")
 	public String getAdd() throws Exception{
 		System.out.println("Add");
 		
@@ -37,7 +37,7 @@ public class BankBookController {
 		
 	}
 	
-	@RequestMapping(value="/update")
+	@RequestMapping(value="update")
 	public String getUpdate() throws Exception{
 		System.out.println("Add");
 		
