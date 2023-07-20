@@ -12,6 +12,7 @@
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 	<h1>Detail page</h1>
+	<h1>${num}</h1>
 	<%-- <% BankBookDTO bankBookDTO = (BankBookDTO ) request.getAttribute("dto");%> --%>
 	
 	<%-- <h3><%= bankBookDTO.getBookName() %></h3> --%>

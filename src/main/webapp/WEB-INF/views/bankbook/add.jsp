@@ -17,7 +17,7 @@
 
 <h1>Add page</h1>
 
-	<form action="./add.do" method="post">
+	<form action="./add" method="post">
 		<div class="mb-3">
 		<label for="bookName" class="form-label">상품명</label>
 		<input type="text" class="form-control" id="bookName" name="bookName"> <br>  <!-- dto의 setter의 이름을 씀-->
@@ -30,13 +30,42 @@
 		<label for="bookRate" class="form-label">이자율</label>
 		<input type="text" class="form-control" id="bookRate" name="bookRate"> <br>
 		</div>
+	
+	<!--  -->	
 		<div class="form-check">
-		<p>
-			판매가능 <input class="form-check-input" type="radio" checked name="bookSale" value="1"> <br>
-			판매중지 <input class="form-check-input" type="radio" name="bookSale" value="0"> <br>
-		</p>
+		  <input class="form-check-input" type="radio" name="sports" value="1" id="true" checked>
+		  <label class="form-check-label" for="true">판매가능</label>
 		</div>
 		
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="sports" value="0" id="false">
+		  <label class="form-check-label" for="false">판매중지</label>
+		</div>
+				
+	<!--  -->
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" name="sports" value="football" id="football">
+		  <label class="form-check-label" for="football">축구</label>
+		</div>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" name="sports" value="basketball" id="basketball">
+		  <label class="form-check-label" for="basketball">농구</label>
+		</div>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" name="sports" value="valleyball" id="valleyball">
+		  <label class="form-check-label" for="valleyball">배구</label>
+		</div>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" name="sports" value="baseball" id="baseball">
+		  <label class="form-check-label" for="baseball">야구</label>
+		</div> <br>
+		
+		
+		
+</div>
 		<!-- <p>
 		<select name="bookSale">
 			<option value="1">판매가능</option>

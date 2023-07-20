@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 	
-	<a class="btn btn-danger" href="./add.do"> 상품등록 </a>
+	<a class="btn btn-danger" href="./add"> 상품등록 </a>
 	</section>
 	
 <%-- 	<c:forEach begin="1" end="10" step="2" var="num"> <!--  증가만 됨 -->
