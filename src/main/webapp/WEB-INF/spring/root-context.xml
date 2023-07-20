@@ -22,7 +22,11 @@
 		<constructor-arg name="engine" ref="engine"></constructor-arg> -->
 		
 		<!-- 매개변수의 type으로 구분 -->
-		<constructor-arg type="java.lang.String" value="BMW"></constructor-arg>
-		<constructor-arg type="com.iu.car.Engine" ref="8"></constructor-arg>
+<!-- 		<constructor-arg type="java.lang.String" value="BMW"></constructor-arg>
+		<constructor-arg type="com.iu.car.Engine" ref="8"></constructor-arg> -->
+		
+		<!-- INDEX  -->
+		<constructor-arg index="0" value="BMW" ></constructor-arg>
+		<constructor-arg index="1" ref="engine"></constructor-arg>
 	</bean>	
 </beans>
