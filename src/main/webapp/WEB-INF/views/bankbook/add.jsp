@@ -17,7 +17,7 @@
 
 <h1>Add page</h1>
 
-	<form action="./add.do" method="post">
+	<form action="./add" method="post">
 		<div class="mb-3">
 		<label for="bookName" class="form-label">상품명</label>
 		<input type="text" class="form-control" id="bookName" name="bookName"> <br>  <!-- dto의 setter의 이름을 씀-->
@@ -31,10 +31,14 @@
 		<input type="text" class="form-control" id="bookRate" name="bookRate"> <br>
 		</div>
 		<div class="form-check">
-		<p>
-			판매가능 <input class="form-check-input" type="radio" checked name="bookSale" value="1"> <br>
-			판매중지 <input class="form-check-input" type="radio" name="bookSale" value="0"> <br>
-		</p>
+<div class="form-check">
+		  <input class="form-check-input" type="radio" name="bookSale" value="1" id="true" checked>
+		  <label class="form-check-label" for="true">판매가능</label>
+		</div>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="bookSale" value="0" id="false">
+		  <label class="form-check-label" for="false">판매중지</label>
 		</div>
 		
 		<!-- <p>
