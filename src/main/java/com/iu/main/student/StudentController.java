@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,11 +27,12 @@ public class StudentController {
 		
 	}
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public ModelAndView getDetail(ModelAndView mv) throws Exception{
+	public ModelAndView getDetail(ModelAndView mv, StudentDTO studentDTO) throws Exception{
 		
-		
+		studentDTO =studentService.getDetail(studentDTO);
+		mv.addObject("dto", studentDTO); // attribute생성
+		mv.setViewName("student/list");  //이쪽 jsp로가라
 		return mv;
-		
 	}
 	
 	

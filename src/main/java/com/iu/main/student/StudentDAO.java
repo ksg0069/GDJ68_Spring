@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.main.bankBook.BankBookDTO;
+
 @Repository
 public class StudentDAO {
 	
@@ -21,9 +23,9 @@ public class StudentDAO {
 	}
 	//detail
 	
-	public List<StudentDTO> getDetail() throws Exception{
+	public StudentDTO getDetail(StudentDTO studentDTO) throws Exception{
 		
-		return sqlSession.selectOne(NAMESPACE + "getDetail");
+		return sqlSession.selectOne(NAMESPACE + "getDetail", studentDTO);
 	}
 	
 	
