@@ -14,6 +14,7 @@
  	SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}  <!-- getter의 이름-->
  	</select>
  	
+ 	
 
  	
  	
