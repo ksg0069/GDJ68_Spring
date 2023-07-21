@@ -32,7 +32,22 @@ public class BankBookDAO {
 		return sqlSession.selectOne(NAMESPACE + "getDetail", bankBookDTO); //selectOne select에서 보낼 때, 어느매퍼의 어느아이디, 파라미터로 dto를받으므로 
 	}//컬럼명과 세터의 이름이 이름이 일치하는것에 dto를 넣어줌
 	//add
+	
+	public int setAdd(BankBookDTO bankBookDTO) throws Exception{
+		
+		return sqlSession.insert(NAMESPACE + "setAdd", bankBookDTO);
+		
+	}
+	
+
 	//update
+	public int setUpdate(BankBookDTO bankBookDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+ "setUpdate", bankBookDTO);
+	}
 	//delete
+	
+	public int setDelete(Long num)throws Exception{
+		return sqlSession.delete(NAMESPACE+ "setDelete", num);
+	}
 
 }

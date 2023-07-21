@@ -15,6 +15,25 @@
  	</select>
  	
 
+ 	<insert id="setAdd" parameterType="com.iu.main.bankBook.BankBookDTO">   <!-- insert는 result가 성공하면 0이상 실패하면 0이므로 resultType을 안써줘도된다 -->
+ 		INSERT INTO BANKBOOK VALUES(BANK_SEQ.NEXTVAL,#{bookName},#{bookRate},#{bookSale},#{bookContents})
+ 		
+ 	</insert>
+ 	
+ 	<update id="setUpdate" parameterType="com.iu.main.bankBook.BankBookDTO">
+ 		UPDATE BANKBOOK SET 
+ 		BOOKNAME=#{bookName},
+ 		BOOKRATE=#{bookRate},
+ 		BOOKSALE=#{bookSale},
+ 		BOOKCONTENTS=#{bookContents} 
+ 		WHERE BOOKNUM=#{bookNum}	
+ 	</update>
+ 	
+ 	<delete id="setDelete" parameterType="java.lang.Long">
+		DELETE BANKBOOK WHERE BOOKNUM = #{num}  	
+ 	</delete>
+ 	
+
  	
  	
   </mapper>
