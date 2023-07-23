@@ -28,6 +28,24 @@ public class StudentDAO {
 		return sqlSession.selectOne(NAMESPACE + "getDetail", studentDTO);
 	}
 	
+	//add
+	public int setAdd(StudentDTO studentDTO)throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setAdd", studentDTO);
+	}
+	
+	//update
+	public int setUpdate(StudentDTO studentDTO)throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setUpdate", studentDTO);
+	}
+	
+	//delete
+	public int setDelete(StudentDTO studentDTO)throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setDelete", studentDTO);
+	}
+	
 	
 
 }

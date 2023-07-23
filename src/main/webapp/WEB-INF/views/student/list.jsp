@@ -24,8 +24,8 @@
 			<c:forEach items="${list}" var="d" varStatus="i"> <!-- 서버에서 보낸 arrylist를(콜렉션 계열) items에 넣는다 , items의 갯수만큼 꺼내서 돌림 var=d->dto의미  -->
 			
 				 <tr>
-					<td ><a class="text-decoration-none" >${d.st_no}</a></td>	
-					<td> ${d.st_name} </td> <%-- href="./detail?st_no=${d.st_no}" --%>
+					<td ><a class="text-decoration-none"  href="./detail?st_no=${d.st_no}">${d.st_no}</a></td>	
+					<td> ${d.st_name} </td> 
 					
 						 
 	 			</tr>

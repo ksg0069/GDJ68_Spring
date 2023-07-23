@@ -10,9 +10,27 @@
   	SELECT ST_NO,ST_NAME FROM STUDENT ORDER BY ST_NO DESC
   </select>
   
-  <select id="getDetail" resultType="com.iu.main.student.StudentDTO">
+  <select id="getDetail" resultType="com.iu.main.student.StudentDTO" parameterType="com.iu.main.student.StudentDTO">
   	SELECT * FROM STUDENT WHERE ST_NO=#{st_no}
   </select>
+  
+  <insert id="setAdd" parameterType="com.iu.main.student.StudentDTO">
+  	INSERT INTO STUDENT VALUES(ST_SEQ.NEXTVAL,#{st_name},#{kor},#{eng},#{math},#{TOTAL},#{AVG})
+  </insert>
+
+	<update id="setUpdate" parameterType="com.iu.main.student.StudentDTO">
+		UPDATE STUDENT SET
+		ST_NAME=#{st_name},
+		KOR=#{kor},
+		ENG=#{eng},
+		MATH=#{math}
+		WHERE ST_NO=#{st_no}
+	</update> 
+	
+	<delete id="setDelete" parameterType="com.iu.main.student.StudentDTO">
+		DELETE STUDENT WHERE ST_NO=#{st_no}
+	</delete> 
+  
   	
   	
   </mapper>

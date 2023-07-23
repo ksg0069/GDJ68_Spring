@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.main.student.StudentDTO;
+
 @Controller
 @RequestMapping("/bankbook/*")
 public class BankBookController {
@@ -36,15 +38,15 @@ public class BankBookController {
 		
 	}
 	
-	@RequestMapping(value="add")
+	@RequestMapping(value="add", method = RequestMethod.GET)
 	public String getAdd() throws Exception{
-		System.out.println("Add");
-		
+
 		return "bankbook/add";
 		
 	}
 	
-	@RequestMapping(value="update")
+	
+	@RequestMapping(value="update" )
 	public String getUpdate() throws Exception{
 		System.out.println("Add");
 		
