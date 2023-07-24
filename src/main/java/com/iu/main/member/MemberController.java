@@ -61,7 +61,7 @@ public class MemberController {
 		
 		MemberDTO sessionMember = (MemberDTO)session.getAttribute("member"); // setAttribute의값이  object 타입이므로 형변환 
 		memberDTO.setId(sessionMember.getId());
-		int result = memberService.setMemberUpdate(memberDTO); //db만 업데이트
+		int result = memberService.setMemberUpdate(memberDTO); //db만 업데이트됨 
 		
 		if(result>0) {
 			session.setAttribute("member", memberDTO);
