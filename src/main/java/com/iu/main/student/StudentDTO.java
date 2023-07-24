@@ -42,17 +42,27 @@ public class StudentDTO {
 		this.math = math;
 	}
 	public Integer getTotal() {
+		
 		return total;
 	}
 	public void setTotal(Integer total) {
-		this.total = kor+eng+math;
+		this.total = total;
 	}
 	public Double getAvg() {
+		
 		return avg;
 	}
 	public void setAvg(Double avg) {
-		this.avg = (double)(total/3);
+		
+		this.avg = avg;
 	}
+	
+	
+	public void cal() {
+		this.total = kor+eng+math;
+		this.avg= total/3.0;
+	}
+	
 	
 
 }

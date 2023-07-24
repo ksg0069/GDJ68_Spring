@@ -12,7 +12,7 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-	<h2>이름 ${dto.name }</h2>
+	<h2>이름 ${dto.st_name }</h2>
 	<h2>국어 ${dto.kor}</h2>   <br>
 	<h2>영어 ${dto.eng}</h2>	<br>  
 	<h2>수학 ${dto.math}</h2> <br>  
