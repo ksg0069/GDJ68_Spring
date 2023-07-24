@@ -15,7 +15,7 @@
   </select>
   
   <insert id="setAdd" parameterType="com.iu.main.student.StudentDTO">
-  	INSERT INTO STUDENT VALUES(ST_SEQ.NEXTVAL,#{st_name},#{kor},#{eng},#{math},#{TOTAL},#{AVG})
+  	INSERT INTO STUDENT(st_no,st_name,kor,eng,math) VALUES(ST_SEQ.NEXTVAL,#{st_name},#{kor},#{eng},#{math})<!-- #{total},#{avg} -->)
   </insert>
 
 	<update id="setUpdate" parameterType="com.iu.main.student.StudentDTO">

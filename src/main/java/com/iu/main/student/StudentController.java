@@ -61,7 +61,8 @@ public class StudentController {
 		
 		int result = studentService.setUpdate(studentDTO);
 		
-		return "redirect:./detail?st_no="+studentDTO.getSt_no();
+//		return "redirect:./detail?st_no="+studentDTO.getSt_no();
+		return "redirect:./list";
 	}
 	
 	

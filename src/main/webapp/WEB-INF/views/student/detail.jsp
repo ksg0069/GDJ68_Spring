@@ -12,12 +12,12 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-
-	<h2>${dto.kor}</h2>   <br>
-	<h2>${dto.eng}</h2>	<br>  
-	<h2>${dto.math}</h2> <br>  
-	<h2>${dto.total}</h2> <br>  
-	<h2>${dto.avg}</h2> <br>  
+	<h2>이름 ${dto.name }</h2>
+	<h2>국어 ${dto.kor}</h2>   <br>
+	<h2>영어 ${dto.eng}</h2>	<br>  
+	<h2>수학 ${dto.math}</h2> <br>  
+	<h2>총점 ${dto.total}</h2> <br>  
+	<h2>평균 ${dto.avg}</h2> <br>  
 
 	<a href="./update?st_no=${dto.st_no}"> 수정 </a>
 	<a href="./delete?st_no=${dto.st_no}">삭제</a>

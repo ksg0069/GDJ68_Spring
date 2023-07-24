@@ -14,6 +14,7 @@
 
 <form action="./update" method="post">
 	<input type="hidden" name="st_no" readonly="readonly"  value="${dto.st_no }">
+	이름 <input type="text" name="st_name" value="${dto.st_name}"> <br>
 	국어 <input type="text" name="kor" value="${dto.kor}"> <br>
 	영어 <input type="text" name="eng" value="${dto.eng}"> <br>
 	수학 <input type="text" name="math" value="${dto.math}"> <br>
