@@ -31,6 +31,7 @@ public class MemberController {
 		
 		if(memberDTO != null) {
 		session.setAttribute("member", memberDTO);
+	
 		}
 		
 		return "redirect:/";
@@ -49,7 +50,25 @@ public class MemberController {
 		return "member/mypage";
 	}
  	
+	//update
+	@RequestMapping(value = "memberUpdate", method = RequestMethod.GET)
+	public void setMemberUpdate()throws Exception{
+		
+	}
 	
+	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
+	public String setMemberUpdate(MemberDTO memberDTO, HttpSession session)throws Exception{
+		
+		MemberDTO sessionMember = (MemberDTO)session.getAttribute("member"); // setAttribute의값이  object 타입이므로 형변환 
+		memberDTO.setId(sessionMember.getId());
+		int result = memberService.setMemberUpdate(memberDTO); //db만 업데이트
+		
+		if(result>0) {
+			session.setAttribute("member", memberDTO);
+		}
+		
+		return "redirect:./mypage";
+	}
 	
 	
 	

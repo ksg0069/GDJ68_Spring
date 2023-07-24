@@ -17,35 +17,35 @@
  
  <section class="container mt-5">
  
- <form action="./join" method="POST">
+ <form action="./memberUpdate" method="post">
  		<h1 class="mb-5">회원가입</h1>
  		<!-- id -->
-		<div class="mb-3 ">
+<!-- 		<div class="mb-3 ">
 		<label for="id" class="form-label">ID</label>
-		<input  type="text" class="form-control" id="id" name="id" placeholder="id 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
-		</div>
+		<input  type="text" class="form-control" id="id" readonly="readonly" name="id" placeholder="id 입력"> <br>  dto의 setter의 이름을 씀
+		</div> -->
 		<!-- pw -->
 		<div class="mb-3 ">
 		<label for="pw" class="form-label">PW</label>
-		<input type="password" class="form-control" id="pw" name="pw" placeholder="pw 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
+		<input type="password" class="form-control" value="${member.pw}" id="pw" name="pw" placeholder="pw 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
 		</div>
 		<!-- name -->
 		<div class="mb-3 ">
 		<label for="name" class="form-label">NAME</label>
-		<input type="text" class="form-control" id="name" name="name" placeholder="이름 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
+		<input type="text" class="form-control" value="${member.name }" id="name" name="name" placeholder="이름 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
 		</div>
 		<!-- email  -->
 		<div class="mb-3 ">
 		<label for="email" class="form-label">Email</label>
-		<input type="email" class="form-control" id="email" name="email" placeholder="Email 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
+		<input type="email" class="form-control" value="${member.email}" id="email"  name="email" placeholder="Email 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
 		</div>
 		<!-- birth -->
 		<div class="mb-3 ">
 		<label for="birth" class="form-label">생년월일</label>
-		<input type="date" class="form-control" id="birth" name="birth">   <!-- dto의 setter의 이름을 씀-->
+		<input type="date" class="form-control" ${member.birth} id="birth" name="birth">   <!-- dto의 setter의 이름을 씀-->
 		</div>
 		
-		<button  type="submit" class="btn btn-outline-primary"><a  class="text-dark text-decoration-none "  >회원가입</a></button>
+		<button  type="submit" class="btn btn-outline-primary"><a  class="text-dark text-decoration-none "  >회원수정</a></button>
 		
 		
 </form>		

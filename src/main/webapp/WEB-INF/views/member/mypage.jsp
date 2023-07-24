@@ -21,6 +21,8 @@
 		<p>${member.email}</p>
 		<p>${member.birth}</p>
 	</div>
+	
+	<a href="./memberUpdate"> 회원수정 </a>
 
 </body>
 </html>
