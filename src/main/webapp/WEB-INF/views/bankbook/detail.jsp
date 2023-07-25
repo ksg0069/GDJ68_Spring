@@ -1,4 +1,4 @@
-<%-- <%@page import="com.iu.bankBook.BankBookDTO"%> --%>
+	<%-- <%@page import="com.iu.main.bankBook.BankBookDTO"%>  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- c= 태그명을 c라고 하겠다 -->
@@ -12,12 +12,12 @@
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 	<h1>Detail page</h1>
-	<%-- <% BankBookDTO bankBookDTO = (BankBookDTO ) request.getAttribute("dto");%> --%>
+<%-- 	 <% BankBookDTO bankBookDTO = (BankBookDTO) request.getAttribute("dto");%> --%>
 	
-	<%-- <h3><%= bankBookDTO.getBookName() %></h3> --%>
+<%-- 	<h3><%= bankBookDTO.getBookName() %></h3> --%>
 	
 	<!-- Getter 이름 : 메서드에서 get을 제외하고 첫번째 글자를 소문자로 바꾼것-->
-	<h1> ${ requestScope.dto.bookName }</h1>
+	<h1> ${requestScope.dto.bookName }</h1>
 	
 	<div>
 	<h1>${ dto.bookContents }</h1>
@@ -34,8 +34,8 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<a href="./update.do?bookNum=${dto.bookNum}"> 수정 </a>
-	<a href="./delete.do?bookNum=${dto.bookNum }">삭제</a>
+	<a href="./update?bookNum=${dto.bookNum}"> 수정 </a>
+	<a href="./delete?bookNum=${dto.bookNum }">삭제</a>
 
 	
 	<%-- <c:if test="${dto.bookSale == 1}"> 

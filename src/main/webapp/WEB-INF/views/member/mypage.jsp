@@ -13,8 +13,16 @@
 <c:import url="../temp/header.jsp"></c:import>
 <%-- <% MemberDTO memberDTO =(MemberDTO) request.getAttribute("member"); %> --%>
 <h1>mypage</h1>
-<h2>id: ${member.id}</h2>
-<h2>name: ${member.name }</h2>
-<h2>${member.pw }</h2>
+
+	<div>
+	
+		<p>id: ${member.id}</p>
+		<p>name: ${member.name }</p>
+		<p>${member.email}</p>
+		<p>${member.birth}</p>
+	</div>
+	
+	<a href="./memberUpdate"> 회원수정 </a>
+
 </body>
 </html>

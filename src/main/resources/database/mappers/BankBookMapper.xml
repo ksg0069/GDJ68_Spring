@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iu.main.bankBook.BankBookDAO"> <!-- dao의 클래스명으로 적음 풀패키지명으로 적음, 마음대로 적어도 됨 --> 
+  
+  	 <select id="getList" resultType="bankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
+ 	SELECT BOOKNUM,BOOKNAME,BOOKRATE,BOOKSALE FROM BANKBOOK ORDER BY BOOKNUM DESC
+ 	</select>
+ 	
+ 	<select id="getDetail" resultType="bankBookDTO" parameterType="com.iu.main.bankBook.BankBookDTO"> <!-- id=dao메서드명 -->
+ 	SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}  <!-- getter의 이름-->
+ 	</select>
+ 	
+
+ 	<insert id="setAdd" parameterType="bankBookDTO">   <!-- insert는 result가 성공하면 0이상 실패하면 0이므로 resultType을 안써줘도된다 -->
+ 		INSERT INTO BANKBOOK VALUES(BANK_SEQ.NEXTVAL,#{bookName},#{bookRate},#{bookSale},#{bookContents})
+ 		
+ 	</insert>
+ 	
+ 	<update id="setUpdate" parameterType="bankBookDTO">
+ 		UPDATE BANKBOOK SET 
+ 		BOOKNAME=#{bookName},
+ 		BOOKRATE=#{bookRate},
+ 		BOOKSALE=#{bookSale},
+ 		BOOKCONTENTS=#{bookContents} 
+ 		WHERE BOOKNUM=#{bookNum}	
+ 	</update>
+ 	
+ 	<delete id="setDelete" parameterType="Long">
+		DELETE BANKBOOK WHERE BOOKNUM = #{num}  	
+ 	</delete>
+ 	
+
+ 	
+ 	
+  </mapper>
+

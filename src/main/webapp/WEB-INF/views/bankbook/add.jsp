@@ -31,7 +31,7 @@
 		<input type="text" class="form-control" id="bookRate" name="bookRate"> <br>
 		</div>
 		<div class="form-check">
-<div class="form-check">
+	<div class="form-check">
 		  <input class="form-check-input" type="radio" name="bookSale" value="1" id="true" checked>
 		  <label class="form-check-label" for="true">판매가능</label>
 		</div>
