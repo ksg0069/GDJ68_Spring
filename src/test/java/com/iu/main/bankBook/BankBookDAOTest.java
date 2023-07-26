@@ -23,10 +23,18 @@ public class BankBookDAOTest extends Mytest {
 	public void getList() throws Exception{	
 	List<BankBookDTO> ar= bankBookDAO.getList();
 	assertNotEquals(0, ar.size());
-	
-	
-	
-	
-	
+
 }
+	@Test
+	public void addTest() throws Exception{
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		for(int i=0; i<30; i++) {
+			bankBookDTO.setBookName("도토리"+i);
+			bankBookDTO.setBookContents("도토리 내용"+i);
+			bankBookDTO.setBookRate(2.3);
+			bankBookDTO.setBookSale(1);
+			bankBookDAO.setAdd(bankBookDTO);
+		}
+		System.out.println("끝");
+	}
 }
