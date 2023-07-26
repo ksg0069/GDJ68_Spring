@@ -41,24 +41,24 @@
 	</table>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination">
-		  <c:if test="${pager.pre }">
-		    <li class="page-item">
+		  <%-- <c:if test="${pager.pre }"> --%>
+		    <li class="page-item ${pager.pre?'':'disabled'}">
 		      <a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 		    </li>
-		    </c:if>
+		    <%-- </c:if> --%>
 		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 		    <li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
 			</c:forEach>
 			
-			<c:if test="${pager.next }">
-		    <li class="page-item" >
+<%-- 			<c:if test="${pager.next }"> --%>
+		    <li class="page-item ${pager.next?'':'disabled' }" >
 		      <a class="page-link" href="./list?page=${pager.lastNum+1}" aria-label="Next">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
-		    </c:if>
+		  <%--   </c:if> --%>
   		</ul>
 	</nav>
 	
