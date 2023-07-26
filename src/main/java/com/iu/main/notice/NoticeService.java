@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.main.util.Pager;
+
 @Service
 public class NoticeService {
 	
@@ -12,9 +14,12 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 	
 	//list
-	public List<NoticeDTO> getList() throws Exception{
+	public List<NoticeDTO> getList(Pager pager) throws Exception{
 		
-		return noticeDAO.getList();
+		pager.makeRowNum();
+		Long total = noticeDAO.getTotal();
+		pager.makePageNum(total);
+		return noticeDAO.getList(pager);
 	}
 	
 	//add

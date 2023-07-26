@@ -6,11 +6,22 @@
   
   <mapper namespace="com.iu.main.notice.NoticeDAO">
   
+  	<select id="getTotal" resultType="Long">
+  		SELECT COUNT(NOTICENUM) FROM NOTICE
+  	</select>
   <!-- list -->
-  	<select id="getList" resultType="NoticeDTO">
+  	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
   	
-  		SELECT NOTICENUM,NOTICENAME,NOTICETITLE,NOTICEDATE,NOTICEHIT FROM NOTICE ORDER BY NOTICENUM DESC
-  	
+  		SELECT NOTICENUM,NOTICENAME,NOTICETITLE,NOTICEDATE,NOTICEHIT
+	  		FROM(SELECT ROWNUM R, B.*
+		  		 FROM(
+		  			 SELECT *
+		  			 FROM NOTICE
+		  			 WHERE NOTICENUM > 0
+		  			 ORDER BY NOTICENUM DESC
+		  			 ) B
+		  	)
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 			
   	</select>
  	
  	

@@ -10,7 +10,7 @@
   	 	SELECT COUNT(BOOKNUM) FROM BANKBOOK
   	 </select>
   	 
-  	 <select id="getList" parameterType="com.iu.main.util.Pager" resultType="bankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
+  	 <select id="getList" parameterType="Pager" resultType="bankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
 		 SELECT BOOKNUM,BOOKNAME,BOOKRATE,BOOKSALE FROM
 			(SELECT ROWNUM R, B.* FROM
 				(

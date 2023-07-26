@@ -17,13 +17,18 @@ public class Pager {
 	private Long perPage;
 	
 	//총 페이지의 갯수
-	private Long totalPage;
+	private Long totalPage; //멤버변수로 써도 되고 안써도됨
 	
 	//시작번호
-	private Long startNum;
+	private Long startNum; //멤버변수로 써도 되고 안써도됨
 	//끝번호
 	private Long lastNum;
 
+	//이전블럭 활성화
+	private boolean pre; //false면 1번블럭, true면 1번 아님
+	
+	//다음블럭 활성화
+	private boolean next; //faslse면 마지막블럭, true 마지막 블럭 아님
 
 	public void makeRowNum() {
 		this.StartRow = (this.getPage()-1)*this.getPerPage()+1;  //null이들어올 수 있으므로 getter 사용
@@ -64,11 +69,48 @@ public class Pager {
 		this.startNum= (curBlock-1)*perBlock+1; 
 		this.lastNum= curBlock*perBlock;
 		
+		//이전 블럭 활성화 여부
+		if(curBlock>1) {
+			this.pre= true;			
+		}
+		//다음블럭 활성화 여부
+		if(curBlock < totalBlock) {
+			this.next=true;
+		}
+		
+		//현재 블럭이 마지막 블럭일 때 lastNum을 totalPage숫자로 대입
+//		if(curBlock==totalBlock) 
+		if(!this.next){
+			this.lastNum=totalPage;
+		}
+		
+		
+
 	}
 	
 
 	
 	
+
+	
+
+	
+
+	public boolean isPre() {
+		return pre;
+	}
+
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
 
 	public Long getStartNum() {
 		return startNum;
