@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" href="../resources/css/index.css"> -->
@@ -38,6 +39,28 @@
 	
 		</tbody>
 	</table>
+	
+	<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+		    <li class="page-item">
+		      <a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+		    <li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+			</c:forEach>
+		    <li class="page-item">
+		      <a class="page-link" href="./list?page=${pager.lastNum+1}" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+  		</ul>
+	</nav>
+<%-- 	<c:forEach begin="1" end="${pager.totalPage}" var="i">
+		<a class="text-decoration-none" href="./list?page=${i}">${i}</a>
+	</c:forEach> --%>
+	
 	
 	<a class="btn btn-danger" href="./add"> 상품등록 </a>
 	</section>

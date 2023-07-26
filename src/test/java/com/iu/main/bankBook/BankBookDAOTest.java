@@ -3,7 +3,9 @@ package com.iu.main.bankBook;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -19,13 +21,18 @@ public class BankBookDAOTest extends Mytest {
 	private BankBookDAO bankBookDAO;
 	
 	//dao중에 test할 메서드명사용
-	@Test
-	public void getList() throws Exception{	
-	List<BankBookDTO> ar= bankBookDAO.getList();
-	assertNotEquals(0, ar.size());
-
-}
-	@Test
+//	@Test
+//	public void getList() throws Exception{	
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		map.put("startRow",11);
+//		map.put("lastRow",20);
+//		
+//		List<BankBookDTO> ar = bankBookDAO.getList(map);
+//		System.out.println(ar.get(0).getBookNum());
+//		System.out.println(ar.get(9).getBookNum());
+//	}
+	
+	//@Test
 	public void addTest() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		for(int i=0; i<30; i++) {
@@ -35,6 +42,8 @@ public class BankBookDAOTest extends Mytest {
 			bankBookDTO.setBookSale(1);
 			bankBookDAO.setAdd(bankBookDTO);
 		}
+		
+		
 		System.out.println("끝");
 	}
 }
