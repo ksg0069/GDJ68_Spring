@@ -17,7 +17,7 @@
  
  <section class="container mt-5">
  
- <form action="./join" method="POST">
+ <form action="./join" method="post" enctype="multipart/form-data">
  		<h1 class="mb-5">회원가입</h1>
  		<!-- id -->
 		<div class="mb-3 ">
@@ -43,6 +43,12 @@
 		<div class="mb-3 ">
 		<label for="birth" class="form-label">생년월일</label>
 		<input type="date" class="form-control" id="birth" name="birth">   <!-- dto의 setter의 이름을 씀-->
+		</div>
+		
+		<!-- file -->
+		<div class="mb-3 ">
+		<label for="pic" class="form-label">사진첨부</label>
+		<input type="file" class="form-control" id="pic" name="pic">   <!-- dto의 setter의 이름을 씀-->
 		</div>
 		
 		<button  type="submit" class="btn btn-outline-primary"><a  class="text-dark text-decoration-none "  >회원가입</a></button>

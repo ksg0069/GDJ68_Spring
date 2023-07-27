@@ -8,19 +8,19 @@ public class Main {
 		//2. 생성자를 이용해서 주입
 		
 		Arm arm = new Arm();
-		Robot robot = new Robot(arm);
-		
-		robot.setArm(arm);
-		
-		robot=null;
-			
-			
-			
-			
-			
-			
-			
-			System.out.println(robot.getArm());
+//		Robot robot = new Robot(arm);
+//		
+//		robot.setArm(arm);
+//		
+//		robot=null;
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			System.out.println(robot.getArm());
 	}
 
 }

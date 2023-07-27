@@ -26,7 +26,7 @@ public class BankBookService {
 //		int startRow =(page-1)*count+1;
 //		int lastRow = page*count;
 		pager.makeRowNum();  // heap영역에 생성됨 pager의 주소가 같으므로 
-		Long total = bankBookDAO.getTotal();
+		Long total = bankBookDAO.getTotal(pager);
 		pager.makePageNum(total);
 //		map.put("startRow", startRow);
 //		map.put("lastRow", lastRow);

@@ -22,9 +22,9 @@ public class BankBookDAO {
 	
 	
 	//total
-	public Long getTotal()throws Exception{//id와 동일한 메서드명 작성
+	public Long getTotal(Pager pager)throws Exception{//id와 동일한 메서드명 작성
 		
-		return sqlSession.selectOne(NAMESPACE+"getTotal");
+		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
 		
 	}
 	

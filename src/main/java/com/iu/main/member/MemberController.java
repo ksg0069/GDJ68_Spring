@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/member/*")
@@ -34,14 +36,14 @@ public class MemberController {
 	
 		}
 		
-		return "redirect:/";
+		return "redirect:../";
 	}
 	
 	//logout
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String getLogout(HttpSession session)throws Exception{
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:../";
 	}
 	
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
@@ -70,11 +72,21 @@ public class MemberController {
 		return "redirect:./mypage";
 	}
 	
+	//회원가입
+	@RequestMapping(value = "join", method = RequestMethod.POST)
+	public String getJoin(MemberDTO memberDTO, MultipartFile pic, HttpSession session) throws Exception{
+		int result = memberService.setJoin(memberDTO, pic,session);
+		System.out.println(pic.getName());
+		System.out.println(pic.getOriginalFilename());
+		System.out.println(pic.getSize());
+		
+		
+		return "redirect:../";
+	}
 	
-	
-	@RequestMapping(value = "join")
+	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String getJoin() throws Exception{
-		System.out.println("join");
+		
 		
 		return "member/join";
 	}

@@ -6,8 +6,22 @@
   
   <mapper namespace="com.iu.main.bankBook.BankBookDAO"> <!-- dao의 클래스명으로 적음 풀패키지명으로 적음, 마음대로 적어도 됨 --> 
   
-  	 <select id="getTotal" resultType="Long">
+  	<sql id="searchSql">
+  		<choose>
+				<when test="kind == 'name'">
+				 AND BOOKNAME LIKE '%'||#{search}||'%'
+				</when>
+				<otherwise>
+				 AND BOOKCONTENTS LIKE '%'||#{search}||'%'
+				</otherwise>	
+			</choose>
+  	</sql>
+  	
+  	 <select id="getTotal" resultType="Long" parameterType="Pager">
   	 	SELECT COUNT(BOOKNUM) FROM BANKBOOK
+  	 	WHERE BOOKNUM >0
+  	 	<include refid="searchSql"/>
+		
   	 </select>
   	 
   	 <select id="getList" parameterType="Pager" resultType="bankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
@@ -16,6 +30,14 @@
 				(
 					SELECT * FROM BANKBOOK
 					WHERE BOOKNUM >0
+					<include refid="searchSql"/>
+						
+						<!-- <if test="kind == 'name'">
+							AND BOOKNAME LIKE '%검색어%'
+						</if> 
+						<if test="kind == 'contents'">
+							AND BOOKCONTENTS LIKE '%검색어%'
+						</if> -->
 					ORDER BY BOOKNUM DESC
 				) B
 			)

@@ -8,6 +8,9 @@ import com.iu.main.bankBook.BankBookDAO;
 
 public class Pager {
 	
+	//검색
+	private String kind;
+	private String search;
 	
 	private Long StartRow;
 	private Long lastRow;
@@ -30,6 +33,7 @@ public class Pager {
 	//다음블럭 활성화
 	private boolean next; //faslse면 마지막블럭, true 마지막 블럭 아님
 
+	
 	public void makeRowNum() {
 		this.StartRow = (this.getPage()-1)*this.getPerPage()+1;  //null이들어올 수 있으므로 getter 사용
 		this.lastRow =this.getPage()*this.getPerPage();
@@ -41,7 +45,7 @@ public class Pager {
 		
 		//1. 전체 갯수로 전체 페이지 수 구하기
 		this.totalPage = total/this.getPerPage();
-		if(total/this.getPerPage()!= 0) {
+		if(total%this.getPerPage()!= 0) {
 			this.totalPage++;
 		}
 		
@@ -92,9 +96,27 @@ public class Pager {
 	
 	
 
-	
 
 	
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(this.search == null) {
+			this.search = "";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 
 	public boolean isPre() {
 		return pre;
