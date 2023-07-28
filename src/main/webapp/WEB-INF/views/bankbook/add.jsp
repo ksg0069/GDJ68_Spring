@@ -17,7 +17,7 @@
 
 <h1>Add page</h1>
 
-	<form action="./add" method="post">
+	<form action="./add" method="post" enctype="multipart/form-data">
 		<div class="mb-3">
 		<label for="bookName" class="form-label">상품명</label>
 		<input type="text" class="form-control" id="bookName" name="bookName"> <br>  <!-- dto의 setter의 이름을 씀-->
@@ -47,6 +47,24 @@
 			<option value="0" selected>판매중지</option>	
 		</select>
 		</p> -->
+		
+							<!-- file -->
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			</div>
+			
+					<!-- file -->
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			</div>
+			
+					<!-- file -->
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			</div>
 		
 		
 		<button class="btn btn-danger" type="submit">등록</button>

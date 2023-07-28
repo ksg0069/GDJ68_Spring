@@ -2,6 +2,8 @@ package com.iu.main.bankBook;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.main.util.Pager;
@@ -48,9 +51,9 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="add", method = RequestMethod.POST)
-	public String setAdd(BankBookDTO bankBookDTO) throws Exception{
+	public String setAdd(BankBookDTO bankBookDTO, MultipartFile[] photos,HttpSession session ) throws Exception{
 		
-		int result = bankBookService.setAdd(bankBookDTO);
+		int result = bankBookService.setAdd(bankBookDTO,photos,session);
 		return "redirect:./list";
 		
 	}

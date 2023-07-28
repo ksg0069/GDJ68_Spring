@@ -6,6 +6,8 @@
   
   <mapper namespace="com.iu.main.bankBook.BankBookDAO"> <!-- dao의 클래스명으로 적음 풀패키지명으로 적음, 마음대로 적어도 됨 --> 
   
+  
+  
   	<sql id="searchSql">
   		<choose>
 				<when test="kind == 'name'">
@@ -24,7 +26,7 @@
 		
   	 </select>
   	 
-  	 <select id="getList" parameterType="Pager" resultType="bankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
+  	 <select id="getList" parameterType="Pager" resultType="BankBookDTO"> <!-- arrayList에서는 set이없으므로 dto를 써야함 -->
 		 SELECT BOOKNUM,BOOKNAME,BOOKRATE,BOOKSALE FROM
 			(SELECT ROWNUM R, B.* FROM
 				(
@@ -44,17 +46,48 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} <!-- map은 key이름 보냄 -->
  	</select>
  	
- 	<select id="getDetail" resultType="bankBookDTO" parameterType="com.iu.main.bankBook.BankBookDTO"> <!-- id=dao메서드명 -->
- 	SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}  <!-- getter의 이름-->
+ 	<select id="getDetail" resultMap="getDetailResult" parameterType="BankBookDTO"> <!-- id=dao메서드명 -->
+	 	SELECT B.*,BF.*
+		FROM BANKBOOK B LEFT JOIN BANKFILE BF
+			ON (B.BOOKNUM = BF.BOOKNUM)
+		WHERE B.BOOKNUM=#{bookNum}  
  	</select>
  	
-
- 	<insert id="setAdd" parameterType="bankBookDTO">   <!-- insert는 result가 성공하면 0이상 실패하면 0이므로 resultType을 안써줘도된다 -->
- 		INSERT INTO BANKBOOK VALUES(BANK_SEQ.NEXTVAL,#{bookName},#{bookRate},#{bookSale},#{bookContents})
+ 	<resultMap type="BankBookDTO" id="getDetailResult">
+ 		<id column="BOOKNUM" property="bookNum"/>
+ 		<result column="BOOKNAME" property="bookName"/>
+ 		<result column="BOOKCONTENTS" property="bookContents"/>
+ 		<result column="BOOKRATE" property="bookRate"/>
+ 		<result column="BOOKSALE" property="bookSale"/>
  		
+ 		<collection property="fileDTOs" javaType="List" ofType="BankBookFileDTO"><!-- 1:n 일때 -->
+ 		
+ 		<id column="FILENUM" property="fileNum"/>
+ 		<result column="FILENAME" property="fileName"/>
+ 		<result column="ORIGINALNAME" property="originalName"/>
+ 		 </collection>
+ 	</resultMap>
+ 	
+
+	
+	<!-- 파일 업로드 -->
+  	<insert id="setFileAdd" parameterType="BankBookFileDTO">
+  		INSERT INTO BANKFILE VALUES(BF_SEQ.NEXTVAL,#{bookNum},#{fileName},#{originalName})
+  	</insert>
+  	
+  	<!-- 	<select id="getSequence" resultType="Long">
+		SELECT BANK_SEQ.NEXTVAL FROM DUAL
+	</select> -->
+  	
+	<!-- add -->
+ 	<insert id="setAdd" parameterType="BankBookDTO">   <!-- insert는 result가 성공하면 0이상 실패하면 0이므로 resultType을 안써줘도된다 -->
+ 		<selectKey keyProperty="bookNum" resultType="Long" order="BEFORE"> <!-- BankBookDTO의 속성 -->
+ 			SELECT BANK_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey> 
+ 		INSERT INTO BANKBOOK VALUES(#{bookNum},#{bookName},#{bookRate},#{bookSale},#{bookContents})
  	</insert>
  	
- 	<update id="setUpdate" parameterType="bankBookDTO">
+ 	<update id="setUpdate" parameterType="BankBookDTO">
  		UPDATE BANKBOOK SET 
  		BOOKNAME=#{bookName},
  		BOOKRATE=#{bookRate},

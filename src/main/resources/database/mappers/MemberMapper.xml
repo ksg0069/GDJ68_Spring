@@ -6,17 +6,38 @@
   
   <mapper namespace="com.iu.main.member.MemberDAO">
   
+  	<!-- 파일 추가  -->
+  	<insert id="setFileJoin" parameterType="MemberFileDTO">
+  		INSERT INTO MEMBERFILE VALUES(MF_SEQ.NEXTVAL,#{id},#{fileName},#{originalName})
+  	</insert>
+  	
   	<!-- 회원가입  -->
   	<insert id="setJoin" parameterType="MemberDTO">
   		INSERT INTO MEMBER
   		VALUES (#{id},#{pw},#{name},#{email},#{birth})
   	</insert>
   	<!-- 로그인  -->
-  	<select id="getLogin" resultType="MemberDTO" parameterType="MemberDTO"> <!-- id 메서드의 값 -->
- 		SELECT * FROM MEMBER 
- 		WHERE ID=#{id} AND PW=#{pw} 	
+  	<select id="getLogin" resultMap="getLoginResult" parameterType="MemberDTO"> <!-- id 메서드의 값 -->
+ 		SELECT M.*, MF.*
+		FROM MEMBER M LEFT JOIN MEMBERFILE MF
+			ON (M.ID = MF.ID)
+		WHERE M.ID=#{id} AND M.PW=#{pw} 	
   	</select>
   	
+  	<resultMap type="MemberDTO" id="getLoginResult">
+  		<id column="ID" property="id"/>  <!-- pk는 id, 세터의 이름적어줌 -->
+  		<result column="PW" property="pw"/>
+  		<result column="NAME" property="name"/>
+  		<result column="EMAIL" property="email"/>
+  		<result column="BIRTH" property="birth"/>
+  		
+  		<association property="memberFileDTO" javaType="MemberFileDTO"> <!-- 1:1 일때  -->
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORIGINALNAME" property="originalName"/>
+  		</association>    
+  		
+  		 </resultMap>
   	<!-- 회원수정 -->
   	<update id="setMemberUpdate" parameterType="MemberDTO">
   		UPDATE MEMBER SET

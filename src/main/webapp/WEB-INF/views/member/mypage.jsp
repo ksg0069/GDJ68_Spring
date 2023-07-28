@@ -15,6 +15,9 @@
 <h1>mypage</h1>
 
 	<div>
+		<p>
+			<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
+		</p>
 	
 		<p>id: ${member.id}</p>
 		<p>name: ${member.name }</p>

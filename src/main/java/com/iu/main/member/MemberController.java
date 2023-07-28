@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.main.util.FileManger;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
@@ -74,7 +76,7 @@ public class MemberController {
 	
 	//회원가입
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String getJoin(MemberDTO memberDTO, MultipartFile pic, HttpSession session) throws Exception{
+	public String setJoin(MemberDTO memberDTO, MultipartFile pic, HttpSession session) throws Exception{
 		int result = memberService.setJoin(memberDTO, pic,session);
 		System.out.println(pic.getName());
 		System.out.println(pic.getOriginalFilename());
@@ -85,7 +87,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "join", method = RequestMethod.GET)
-	public String getJoin() throws Exception{
+	public String setJoin() throws Exception{
 		
 		
 		return "member/join";

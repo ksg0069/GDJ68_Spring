@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.main.member.MemberFileDTO;
 import com.iu.main.util.Pager;
 
 @Repository // 해당 클래스의 객체 생성
@@ -19,6 +20,9 @@ public class BankBookDAO {
 	private SqlSession sqlSession; // database-context.xml을 주입받음 , mapper들의 위치(어느 mapper쓸건지 모름),db연결
 	
 	private final String NAMESPACE="com.iu.main.bankBook.BankBookDAO.";  //mapper의 namespace와 동일한 이름
+	
+	
+	
 	
 	
 	//total
@@ -48,6 +52,15 @@ public class BankBookDAO {
 		return sqlSession.insert(NAMESPACE + "setAdd", bankBookDTO);
 		
 	}
+	
+	//fileAdd
+	public int setFileAdd(BankBookFileDTO bankBookFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileAdd",bankBookFileDTO );
+	}
+	
+//	public long getSequence() throws Exception{
+//		return sqlSession.selectOne(NAMESPACE+"getSequence");
+//	}
 	
 
 	//update
