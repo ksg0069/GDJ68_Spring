@@ -51,19 +51,19 @@
 							<!-- file -->
 			<div class="mb-3 ">
 			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			<input type="file" class="form-control" id="pic" name="photos">  
 			</div>
 			
 					<!-- file -->
 			<div class="mb-3 ">
 			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			<input type="file" class="form-control" id="pic" name="photos">   
 			</div>
 			
 					<!-- file -->
 			<div class="mb-3 ">
 			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   <!-- dto의 setter의 이름을 씀-->
+			<input type="file" class="form-control" id="pic" name="photos">   
 			</div>
 		
 		

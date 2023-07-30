@@ -37,7 +37,8 @@
   			<result column="ORIGINALNAME" property="originalName"/>
   		</association>    
   		
-  		 </resultMap>
+  	</resultMap>
+  	
   	<!-- 회원수정 -->
   	<update id="setMemberUpdate" parameterType="MemberDTO">
   		UPDATE MEMBER SET

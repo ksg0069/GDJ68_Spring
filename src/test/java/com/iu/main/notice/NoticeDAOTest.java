@@ -25,10 +25,10 @@ public class NoticeDAOTest extends Mytest{
 		@Test
 		public void addTest() throws Exception{
 			NoticeDTO noticeDTO = new NoticeDTO();
-			for(int i=0; i<=30; i++) {
-				noticeDTO.setNoticeName("강아지"+i);
-				noticeDTO.setNoticeTitle("동물"+i);
-				noticeDTO.setNoticeContents("푸들"+i);
+			for(int i=0; i<30; i++) {
+				noticeDTO.setNoticeName("안경"+i);
+				noticeDTO.setNoticeTitle("안경1"+i);
+				noticeDTO.setNoticeContents("안경2"+i);
 				noticeDAO.setAdd(noticeDTO);
 				
 				

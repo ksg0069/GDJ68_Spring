@@ -41,16 +41,44 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 			
   	</select>
  	
+ 	<!-- 파일업로드 -->
+	<insert id="setFileAdd" parameterType="NoticeFileDTO">
+  		INSERT INTO NOTICEFILE VALUES(NF_SEQ.NEXTVAL,#{Num},#{fileName},#{originalName})
+  	</insert>
  	
  	<!-- add -->
  	<insert id="setAdd" parameterType="NoticeDTO">
- 		INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{noticeName},#{noticeTitle},#{noticeContents},SYSDATE,0)
+ 		<selectKey keyProperty="noticeNum" resultType="long" order="BEFORE">
+ 			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO NOTICE VALUES(#{noticeNum},#{noticeName},#{noticeTitle},#{noticeContents},SYSDATE,1)
  	</insert>
  	
  	<!-- detail -->
- 	<select id="getDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
- 		SELECT * FROM NOTICE WHERE NOTICENUM=#{noticeNum}
+ 	<select id="getDetail" resultMap="getDetailResult" parameterType="NoticeDTO">
+ 		SELECT N.*,NF.*
+		FROM NOTICE N LEFT JOIN NOTICEFILE NF
+			ON (N.NOTICENUM = NF.NOTICENUM)
+		WHERE N.NOTICENUM=#{noticeNum}
  	</select> 
+ 	
+ 	<resultMap type="NoticeDTO" id="getDetailResult">
+ 	
+ 		<id column="NOTICENUM" property="noticeNum"/>
+ 		<result column="NOTICENAME" property="noticeName"/>
+ 		<result column="NOTICETITLE" property="noticeTitle"/>
+ 		<result column="NOTICECONTENTS" property="noticeContents"/>
+ 		<result column="NOTICEDATE" property="noticeDate"/>
+ 		<result column="NOTICEHIT" property="noticeHit"/>
+ 		
+		<collection property="fileDTOs" javaType="List" ofType="NoticeFileDTO"> <!-- 1:n 일때 -->
+ 		
+	 		<id column="FILENUM" property="fileNum"/>
+	 		<result column="FILENAME" property="fileName"/>
+	 		<result column="ORIGINALNAME" property="originalName"/>
+ 		</collection>
+ 		
+ 	</resultMap>
  	
  	<!-- update  -->
  	<update id="setUpdate" parameterType="NoticeDTO">

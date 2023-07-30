@@ -16,5 +16,7 @@
  	<typeAlias type="com.iu.main.member.MemberFileDTO" alias="MemberFileDTO"/>
  	<typeAlias type="com.iu.main.util.Pager" alias="Pager"/>
  	<typeAlias type="com.iu.main.bankBook.BankBookFileDTO" alias="BankBookFileDTO"/>
+ 	<typeAlias type="com.iu.main.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+ 	
  </typeAliases>
 </configuration>				  

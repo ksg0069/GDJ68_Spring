@@ -1,20 +1,29 @@
 package com.iu.main.notice;
 
 import java.sql.Date;
+import java.util.List;
 
 public class NoticeDTO {
 	
-	private Integer noticeNum;
+	private Long noticeNum;
 	private String noticeName;
 	private String noticeTitle;
 	private String noticeContents;
 	private Date noticeDate;
-	private Integer noticeHit;
+	private Long noticeHit;
+	private List<NoticeFileDTO> fileDTOs;
 	
-	public Integer getNoticeNum() {
+	public List<NoticeFileDTO> getFileDTOs() {
+		return fileDTOs;
+	}
+	public void setFileDTOs(List<NoticeFileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
+	}
+	
+	public Long getNoticeNum() {
 		return noticeNum;
 	}
-	public void setNoticeNum(Integer noticeNum) {
+	public void setNoticeNum(Long noticeNum) {
 		this.noticeNum = noticeNum;
 	}
 	public String getNoticeName() {
@@ -41,12 +50,13 @@ public class NoticeDTO {
 	public void setNoticeDate(Date noticeDate) {
 		this.noticeDate = noticeDate;
 	}
-	public Integer getNoticeHit() {
+	public Long getNoticeHit() {
 		return noticeHit;
 	}
-	public void setNoticeHit(Integer noticeHit) {
+	public void setNoticeHit(Long noticeHit) {
 		this.noticeHit = noticeHit;
 	}
+
 	
 	
 	

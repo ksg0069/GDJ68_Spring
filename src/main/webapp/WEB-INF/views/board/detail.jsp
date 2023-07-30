@@ -39,7 +39,11 @@
 
 		<tr>
 			<td colspan="4">${dto.noticeContents}</td>
+			
 		</tr>
+		<c:forEach items="${dto.fileDTOs}" var="f">
+		<img alt="" src="/resources/upload/board/${f.fileName}">
+		</c:forEach>
 		</tfoot>
 
 	</table>

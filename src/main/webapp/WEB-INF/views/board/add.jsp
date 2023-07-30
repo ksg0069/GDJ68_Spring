@@ -20,9 +20,12 @@
 	<section class="container mt-5">
 	
 		<form action="./add" method="post">
+		
+			
+		
 			<div class="mb-3">
 			<label for="nName" class="form-label">작성자</label>
-			<input type="text" class="form-control" id="nName" name="noticeName" value="${member.name}"> <br>  <!-- dto의 setter의 이름을 씀-->
+			<input type="text" class="form-control" id="nName" name="noticeName"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
 			<div class="mb-3">
@@ -33,6 +36,32 @@
 			<div class="mb-3">
 			<label for="nContents" class="form-label">본문</label>
 			<textarea rows="" cols="" class="form-control" id="nContents" name="noticeContents"></textarea>
+			</div>
+			
+							<!-- file -->
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">  
+			</div>
+			
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   
+			</div>
+				
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   
+			</div>
+			
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   
+			</div>
+			
+			<div class="mb-3 ">
+			<label for="pic" class="form-label">사진첨부</label>
+			<input type="file" class="form-control" id="pic" name="photos">   
 			</div>
 			
 		

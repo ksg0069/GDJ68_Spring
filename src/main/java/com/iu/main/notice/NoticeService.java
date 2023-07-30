@@ -2,9 +2,13 @@ package com.iu.main.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.main.util.FileManger;
 import com.iu.main.util.Pager;
 
 @Service
@@ -12,6 +16,9 @@ public class NoticeService {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private FileManger fileManger;
 	
 	//list
 	public List<NoticeDTO> getList(Pager pager) throws Exception{
@@ -23,9 +30,27 @@ public class NoticeService {
 	}
 	
 	//add
-	public int setAdd(NoticeDTO noticeDTO) throws Exception{
+	public int setAdd(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession session) throws Exception{
 		
-		return noticeDAO.setAdd(noticeDTO);
+		String path = "/resources/upload/board/";
+		
+		int result = noticeDAO.setAdd(noticeDTO);
+		
+		for(MultipartFile multipartFile: files) {
+			
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			
+			String fileName = fileManger.fileSave(path, multipartFile, session);
+			NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+			noticeFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			noticeFileDTO.setFileName(fileName);
+			noticeFileDTO.setNoticeNum(noticeDTO.getNoticeNum());
+			result = noticeDAO.setFileAdd(noticeFileDTO);
+		}
+		
+		return result;
 	}
 	
 	//detail
