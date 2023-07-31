@@ -41,7 +41,7 @@ public class NoticeController {
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String setAdd(NoticeDTO noticeDTO,MultipartFile [] photos, HttpSession session )throws Exception{
-		
+		System.out.println(noticeDTO.getNoticeName());
 		int result = noticeService.setAdd(noticeDTO,photos,session);
 		
 		return "redirect:./list";

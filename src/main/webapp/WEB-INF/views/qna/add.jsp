@@ -19,13 +19,13 @@
 
 	<section class="container mt-5">
 	
-		<form action="./add" method="post" enctype="multipart/form-data">
+		<form action="./add" method="post">
 		
 			
 		
 			<div class="mb-3">
 			<label for="nName" class="form-label">작성자</label>
-			<input type="text" class="form-control" id="nName" name="noticeName" readonly="readonly" value="${member.id}"> <br>  <!-- dto의 setter의 이름을 씀-->
+			<input type="text" class="form-control" id="nName" name="noticeName"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
 			<div class="mb-3">

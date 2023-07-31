@@ -41,7 +41,7 @@ public class NoticeDAO {
 	
 	//add
 	public int setAdd(NoticeDTO noticeDTO) throws Exception{
-		
+		System.out.println("DAO : "+noticeDTO.getNoticeName());
 		return sqlSession.insert(NAMESPACE+"setAdd",noticeDTO);
 	
 	}

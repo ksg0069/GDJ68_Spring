@@ -54,20 +54,18 @@ public class BankBookService {
 		
 		int result = bankBookDAO.setAdd(bankBookDTO);
 		
-		
-		for(MultipartFile multipartFile: files) {
-		
-			if(multipartFile.isEmpty()) {
-				continue;
-			}
-			String fileName =fileManger.fileSave(path, multipartFile, session);
+		if(files.length!=0) {
+			for(int i=0; i<files.length; i++) {
+	
+			String fileName =fileManger.fileSave(path, files[i], session);
 			BankBookFileDTO bankBookFileDTO = new BankBookFileDTO();
-			bankBookFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			bankBookFileDTO.setOriginalName(files[i].getOriginalFilename());
 			bankBookFileDTO.setFileName(fileName);
 			bankBookFileDTO.setBookNum(bankBookDTO.getBookNum());
 			result = bankBookDAO.setFileAdd(bankBookFileDTO);
-		
+			}
 		}
+		
 		
 		return result;
 	}

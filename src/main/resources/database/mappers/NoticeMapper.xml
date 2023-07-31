@@ -43,15 +43,16 @@
  	
  	<!-- 파일업로드 -->
 	<insert id="setFileAdd" parameterType="NoticeFileDTO">
-  		INSERT INTO NOTICEFILE VALUES(NF_SEQ.NEXTVAL,#{Num},#{fileName},#{originalName})
+  		INSERT INTO NOTICEFILE VALUES(NF_SEQ.NEXTVAL,#{noticeNum},#{fileName},#{originalName})
   	</insert>
  	
  	<!-- add -->
  	<insert id="setAdd" parameterType="NoticeDTO">
- 		<selectKey keyProperty="noticeNum" resultType="long" order="BEFORE">
+ 		<selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
  			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
- 		INSERT INTO NOTICE VALUES(#{noticeNum},#{noticeName},#{noticeTitle},#{noticeContents},SYSDATE,1)
+ 		INSERT INTO NOTICE (NOTICENUM,NOTICENAME,NOTICETITLE,NOTICECONTENTS,NOTICEDATE,NOTICEHIT)
+ 		VALUES (#{noticeNum},#{noticeName},#{noticeTitle},#{noticeContents},SYSDATE,1)
  	</insert>
  	
  	<!-- detail -->
