@@ -26,10 +26,10 @@
 		<tbody class="table-light">
 			
 			 	<tr>
-					<td> ${dto.noticeTitle}</td>
-					<td> ${dto.noticeName}</td>
-					<td> ${dto.noticeDate}</td>
-					<td> ${dto.noticeHit}</td>
+					<td> ${dto.subject}</td>
+					<td> ${dto.name}</td>
+					<td> ${dto.createDate}</td>
+					<td> ${dto.hit}</td>
 	 			</tr>
 	 	
 		</tbody>
@@ -38,10 +38,10 @@
 		
 
 		<tr>
-			<td colspan="4">${dto.noticeContents} <br>
-				<c:forEach items="${dto.fileDTOs}" var="f">
+			<td colspan="4">${dto.contents} <br>
+	<%-- 			<c:forEach items="${dto.fileDTOs}" var="f">
 				<img alt="" src="/resources/upload/board/${f.fileName}">
-		</c:forEach>
+		</c:forEach> - --%>
 			</td>
 			
 		</tr>
@@ -51,8 +51,8 @@
 	</table>
 	
 	<a class="btn btn-dark" href="./list"> 목록 </a>
-	<a class="btn btn-dark" href="./update?noticeNum=${dto.noticeNum }"> 수정 </a>
-	<a class="btn btn-danger" href="./delete?noticeNum=${dto.noticeNum}"> 삭제 </a>
+	<a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a>
+	<a class="btn btn-danger" href="./delete?num=${dto.num}"> 삭제 </a>
 	
 	
 	</section>

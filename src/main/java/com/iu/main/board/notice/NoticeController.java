@@ -1,4 +1,4 @@
-package com.iu.main.notice;
+package com.iu.main.board.notice;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.main.board.BoardDTO;
 import com.iu.main.util.Pager;
 
 @Controller
@@ -24,7 +25,7 @@ public class NoticeController {
 	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET )
 	public ModelAndView getList(ModelAndView mv,Pager pager)throws Exception{		
-		List<NoticeDTO> ar = noticeService.getList(pager);
+		List<BoardDTO> ar = noticeService.getList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
@@ -41,7 +42,7 @@ public class NoticeController {
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String setAdd(NoticeDTO noticeDTO,MultipartFile [] photos, HttpSession session )throws Exception{
-		System.out.println(noticeDTO.getNoticeName());
+		
 		int result = noticeService.setAdd(noticeDTO,photos,session);
 		
 		return "redirect:./list";
@@ -52,7 +53,7 @@ public class NoticeController {
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String getDtail(NoticeDTO noticeDTO, Model model)throws Exception{
 		
-		noticeDTO =noticeService.getDetail(noticeDTO);
+		BoardDTO boardDTO = noticeService.getDetail(noticeDTO);
 		model.addAttribute("dto",noticeDTO);
 		
 		return "board/detail";
@@ -62,7 +63,7 @@ public class NoticeController {
 	//update
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
-		noticeDTO = noticeService.getDetail(noticeDTO);
+		BoardDTO boardDTO = noticeService.getDetail(noticeDTO);
 		model.addAttribute("dto",noticeDTO);
 		
 		return "board/update";

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.main.Mytest;
 import com.iu.main.bankBook.BankBookDTO;
+import com.iu.main.board.notice.NoticeDAO;
+import com.iu.main.board.notice.NoticeDTO;
 
 
 public class NoticeDAOTest extends Mytest{
@@ -26,9 +28,9 @@ public class NoticeDAOTest extends Mytest{
 		public void addTest() throws Exception{
 			NoticeDTO noticeDTO = new NoticeDTO();
 			for(int i=0; i<30; i++) {
-				noticeDTO.setNoticeName("안경"+i);
-				noticeDTO.setNoticeTitle("안경1"+i);
-				noticeDTO.setNoticeContents("안경2"+i);
+				noticeDTO.setName("안경"+i);
+				noticeDTO.setSubject("안경1"+i);
+				noticeDTO.setContents("안경2"+i);
 				noticeDAO.setAdd(noticeDTO);
 				
 				

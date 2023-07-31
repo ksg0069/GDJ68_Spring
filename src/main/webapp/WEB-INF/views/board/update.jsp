@@ -19,20 +19,20 @@
 	
 		<form action="./update" method="post">
 		
-			<input type="hidden" name="noticeNum" readonly="readonly"  value="${dto.noticeNum }">
+			<input type="hidden" name="num" readonly="readonly"  value="${dto.num }">
 			<div class="mb-3">
 			<label for="nName" class="form-label">작성자</label>
-			<input type="text" class="form-control" readonly="readonly" id="nName" name="noticeName" value="${dto.noticeName}"> <br>  <!-- dto의 setter의 이름을 씀-->
+			<input type="text" class="form-control" readonly="readonly" id="nName" name="name" value="${dto.name}"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
 			<div class="mb-3">
 			<label for="nTitle" class="form-label">제목</label>
-			<input type="text" class="form-control" id="nTitle" name="noticeTitle" value="${dto.noticeTitle}"> <br>
+			<input type="text" class="form-control" id="nTitle" name="subject" value="${dto.subject}"> <br>
 			</div>
 			
 			<div class="mb-3">
 			<label for="nContents" class="form-label">본문</label>
-			<textarea rows="" cols="" class="form-control" id="nContents" name="noticeContents" >${dto.noticeContents}</textarea>
+			<textarea rows="" cols="" class="form-control" id="nContents" name="contents" >${dto.contents}</textarea>
 			</div>
 			
 		
