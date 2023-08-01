@@ -6,6 +6,7 @@
   
   <mapper namespace="com.iu.main.board.qna.QnaDAO">
   
+  <!-- sql  -->
   	<sql id="searchSql">
   		<if test="kind == 'name'">
 		 		AND	NAME LIKE '%'||#{search}||'%'
@@ -18,6 +19,7 @@
 		 	</if>
   	</sql>
   
+  <!-- total -->
   	<select id="getTotal" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM)
   		FROM QNA
@@ -25,33 +27,81 @@
   		<include refid="searchSql"/>
   	</select>
   	
+  	<!-- List  -->
   	<select id="getList" parameterType="Pager" resultType="QnaDTO">
-  		SELECT NUM,NAME,SUBJECT,CREATEDATE,HIT
+  		SELECT NUM,NAME,SUBJECT,CREATEDATE,HIT,DEPTH
   			FROM(SELECT ROWNUM R, B.*
   				 FROM(SELECT *
   				 		FROM QNA
   				 	  WHERE NUM > 0
   				 	  <include refid="searchSql"/>
-  				 	  ORDER BY NUM DESC	 
+  				 	  ORDER BY REF DESC, STEP ASC	 
   				 	  ) B	  
   			)
   		WHERE R BETWEEN #{startRow} AND #{lastRow}	 
   		
   	</select>
   	
+  	<!-- Add  -->
  	<insert id="setAdd" parameterType="QnaDTO">
  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
  		INSERT INTO QNA(NUM,NAME,SUBJECT,CONTENTS,CREATEDATE,HIT,REF,STEP,DEPTH) 
- 		VALUES (#{num},#{name},#{subject},#{contents},SYSDATE,0,0,0,0)
+ 		VALUES (#{num},#{name},#{subject},#{contents},SYSDATE,0,#{num},0,0)
+ 	
+ 	
+ 	<!-- reply  -->
+ 	</insert>
+ 	
+ 	 	<insert id="setReplyAdd" parameterType="QnaDTO">
+ 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+ 			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO QNA(NUM,NAME,SUBJECT,CONTENTS,CREATEDATE,HIT,REF,STEP,DEPTH) 
+ 		VALUES (#{num},#{name},#{subject},#{contents},SYSDATE,0,#{ref},#{step},#{depth})
  	
  	</insert>
  	
- 	<select id="getDetail" resultType="QnaDTO">
- 		SELECT * 
- 		FROM QNA 
- 		WHERE NUM=#{num}
+ 	<!-- Step  -->
+ 	<update id="setStepUpdate" parameterType="QnaDTO">
+ 		UPDATE QNA SET STEP = STEP+1
+ 		WHERE REF=#{ref} AND STEP >#{step}
+ 	</update>
+ 	
+ 	<!-- file -->
+ 	<insert id="setFileAdd" parameterType="QnaDTO">
+ 		INSERT INTO QNAFILE VALUES(QF_SEQ.NEXTVAL,#{num},#{fileName},#{originalName})
+ 	</insert>
+ 	
+ 	<!-- detail  -->
+ 	<select id="getDetail" resultMap="getDetailResult">
+ 		SELECT Q.*,QF.* 
+ 		FROM QNA Q LEFT JOIN QNAFILE QF
+ 		ON Q.NUM = QF.NUM 
+ 		WHERE Q.NUM=#{num}
 	 </select>
+	 
+	 <resultMap type="QnaDTO" id="getDetailResult">
+	 	<id column="NUM" property="num"/>
+	 	<result column="NAME" property="name"/>
+	 	<result column="SUBJECT" property="subject"/>
+	 	<result column="CONTENTS" property="contents"/>
+	 	<result column="CREATEDATE" property="createDate"/>
+	 	<result column="HIT" property="hit"/>
+	 	<result column="REF" property="ref"/>
+	 	<result column="STEP" property="step"/>
+	 	<result column="DEPTH" property="depth"/>
+	 	
+	 	<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO"> 
+	 		<id column="FILENUM" property="fileNum"/>
+	 		<result column="FILENAME" property="fileName"/>
+	 		<result column="ORIGINALNAME" property="originalName"/>
+ 		</collection>
+	 	
+	 </resultMap>  
+	 
+	 <!-- update  -->
+	 <!-- delete -->
   </mapper>
 

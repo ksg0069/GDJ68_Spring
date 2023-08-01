@@ -15,7 +15,7 @@
 
 
 	<section class="container mt-5">
-	<h1 class="mb-4 text-center"  > NOTICE</h1>
+	<h1 class="mb-4 text-center"  >${board}</h1>
 	<!-- 표현식 -->
 	
 	<table class="table">
@@ -28,7 +28,15 @@
 			
 			 	<tr>
 					<td >${d.num}</td>	
-					<td> <a class="text-decoration-none" href="./detail?num=${d.num}">${d.subject}</a></td>
+					<td> <a class="text-decoration-none" href="./detail?num=${d.num}">
+					
+						<c:catch>
+						<c:forEach begin="1" end="${d.depth}">--</c:forEach>
+						</c:catch>
+					
+					${d.subject}</a></td>
+					
+					
 					<td> ${d.name}</td>
 					<td> ${d.createDate}</td>
 					<td> ${d.hit}</td>
@@ -66,7 +74,7 @@
 		<form action="./list" method="get">
 	  	<select name="kind" class="form-select" aria-label="Default select example">
 			 <option value="name">Name</option>
-			 <option value="title">Title</option>
+			 <option value="title">Subject</option>
 			 <option value="contents">Contents</option>
 		</select>
 		<input type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)">
@@ -77,6 +85,10 @@
 		</form>	
 	
 	<a class="btn btn-danger" href="./add"> 글등록 </a>
+	
+	
+	
+	
 	</section>
 </body>
 </html>

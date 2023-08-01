@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -22,6 +23,13 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	
+	@ModelAttribute("board") //reuestmapping 실행되기전에 실행되서 모델에다가 이름은:board value:notice
+	public String getBoardName() {
+		return "QNA";
+	}
+	
+	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET )
 	public String getList(Pager pager, Model model)throws Exception{
 		
@@ -33,6 +41,7 @@ public class QnaController {
 		
 	}
 	
+	//add
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
 		
@@ -46,14 +55,36 @@ public class QnaController {
 		return "redirect:./list";
 	}
 	
+	//reply
+	@RequestMapping(value = "reply", method = RequestMethod.GET)
+	public String setReplyAdd(Long num,Model model)throws Exception{
+		
+		model.addAttribute("num", num);
+		
+		return "board/reply";
+	}
+	
+	@RequestMapping(value = "reply", method = RequestMethod.POST)
+	public String setReplyAdd(QnaDTO qnaDTO, MultipartFile[] photos, HttpSession session)throws Exception{
+		int result = qnaService.setReplyAdd(qnaDTO, photos, session);
+		
+		return "redirect:./list";
+	}
+	
+	//detail
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String getDetail(QnaDTO qnaDTO, Model model)throws Exception{
 		
-		BoardDTO boardDTO =qnaService.getDetail(qnaDTO);
+		BoardDTO boardDTO = qnaService.getDetail(qnaDTO);
 		model.addAttribute("dto", boardDTO);
 		
 		return "board/detail";
 	}
+	
+	//update
+	
+	
+	//delete
 	
 
 }

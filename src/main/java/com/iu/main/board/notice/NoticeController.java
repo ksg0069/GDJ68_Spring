@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +22,11 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@ModelAttribute("board") //reuestmapping 실행되기전에 실행되서 모델에다가 이름은:board value:notice
+	public String getBoardName() {
+		return "NOTICE";
+	}
 	
 	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET )
@@ -54,7 +60,7 @@ public class NoticeController {
 	public String getDtail(NoticeDTO noticeDTO, Model model)throws Exception{
 		
 		BoardDTO boardDTO = noticeService.getDetail(noticeDTO);
-		model.addAttribute("dto",noticeDTO);
+		model.addAttribute("dto",boardDTO);
 		
 		return "board/detail";
 		

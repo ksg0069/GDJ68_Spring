@@ -39,9 +39,11 @@
 
 		<tr>
 			<td colspan="4">${dto.contents} <br>
-	<%-- 			<c:forEach items="${dto.fileDTOs}" var="f">
-				<img alt="" src="/resources/upload/board/${f.fileName}">
-		</c:forEach> - --%>
+			
+ 		<c:forEach items="${dto.fileDTOs}" var="f">
+		<img alt="" src="/resources/upload/board/${f.fileName}">
+		</c:forEach>  
+		
 			</td>
 			
 		</tr>
@@ -50,9 +52,19 @@
 
 	</table>
 	
+
 	<a class="btn btn-dark" href="./list"> 목록 </a>
 	<a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a>
-	<a class="btn btn-danger" href="./delete?num=${dto.num}"> 삭제 </a>
+	<a class="btn btn-danger" href="./delete?num=${dto.num}"> 삭제 </a> <br>
+	
+	<c:if test="${board ne 'NOTICE'}">
+	<a class="btn btn-dark" href="./reply?num=${dto.num}"> 댓글 </a>
+	</c:if>
+
+	
+		
+		
+	</form>
 	
 	
 	</section>

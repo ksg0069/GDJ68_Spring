@@ -15,17 +15,17 @@
 
 
 
-	<h1 class="mb-4 mt-5 text-center"  >${board} 글쓰기</h1>
+	<h1 class="mb-4 mt-5 text-center" >${board} 답글달기 </h1>
 
 	<section class="container mt-5">
 	
-		<form action="./add" method="post" enctype="multipart/form-data">
+		<form action="./reply" method="post" enctype="multipart/form-data">
 		
-			
+			<input type="hidden" name="num" value="${num}">
 		
 			<div class="mb-3">
 			<label for="nName" class="form-label">작성자</label>
-			<input type="text" class="form-control" id="nName" name="name" readonly="readonly" value="${member.id}"> <br>  <!-- dto의 setter의 이름을 씀-->
+			<input type="text" class="form-control" id="nName" name="name"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
 			<div class="mb-3">
@@ -39,7 +39,7 @@
 			</div>
 			
 							<!-- file -->
-			<div class="mb-3 ">
+	 		<div class="mb-3 ">
 			<label for="pic" class="form-label">사진첨부</label>
 			<input type="file" class="form-control" id="pic" name="photos">  
 			</div>
@@ -62,7 +62,7 @@
 			<div class="mb-3 ">
 			<label for="pic" class="form-label">사진첨부</label>
 			<input type="file" class="form-control" id="pic" name="photos">   
-			</div>
+			</div> 
 			
 		
 		

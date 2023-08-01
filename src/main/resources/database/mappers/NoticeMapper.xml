@@ -51,17 +51,17 @@
   	</resultMap> -->
  	
  	<!-- 파일업로드 -->
-	<insert id="setFileAdd" parameterType="NoticeFileDTO">
+	<insert id="setFileAdd" parameterType="NoticeFileDTO" >
   		INSERT INTO NOTICEFILE VALUES(NF_SEQ.NEXTVAL,#{noticeNum},#{fileName},#{originalName})
   	</insert>
  	
  	<!-- add -->
- 	<insert id="setAdd" parameterType="NoticeDTO">
- 		<selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+ 	<insert id="setAdd" parameterType="NoticeDTO" >
+ 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
  			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
  		INSERT INTO NOTICE (NOTICENUM,NOTICENAME,NOTICETITLE,NOTICECONTENTS,NOTICEDATE,NOTICEHIT)
- 		VALUES (#{noticeNum},#{noticeName},#{noticeTitle},#{noticeContents},SYSDATE,1)
+ 		VALUES (#{num},#{name},#{subject},#{contents},SYSDATE,1)
  	</insert>
  	
  	<!-- detail -->
@@ -69,7 +69,7 @@
  		SELECT N.*,NF.*
 		FROM NOTICE N LEFT JOIN NOTICEFILE NF
 			ON (N.NOTICENUM = NF.NOTICENUM)
-		WHERE N.NOTICENUM=#{noticeNum}
+		WHERE N.NOTICENUM=#{num}
  	</select> 
  	
  	<resultMap type="NoticeDTO" id="getDetailResult">
@@ -92,14 +92,14 @@
  	
  	<!-- update  -->
  	<update id="setUpdate" parameterType="NoticeDTO">
-		UPDATE NOTICE SET NOTICETITLE=#{noticeTitle}, NOTICECONTENTS=#{noticeContents} WHERE NOTICENUM=#{noticeNum}
+		UPDATE NOTICE SET NOTICETITLE=#{title}, NOTICECONTENTS=#{contents} WHERE NOTICENUM=#{num}
 		
 		  	
  	</update>
  	
  	<!--delete  -->
  	<delete id="setDelete" parameterType="NoticeDTO">
- 		DELETE FROM NOTICE WHERE NOTICENUM = #{noticeNum}  
+ 		DELETE FROM NOTICE WHERE NOTICENUM = #{num}  
  	</delete>
  		
   
