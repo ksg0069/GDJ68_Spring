@@ -11,7 +11,7 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-	<h1>Update page</h1>
+	<h1>${board} Update page</h1>
 	
 	
 
@@ -22,7 +22,7 @@
 			<input type="hidden" name="num" readonly="readonly"  value="${dto.num }">
 			<div class="mb-3">
 			<label for="nName" class="form-label">작성자</label>
-			<input type="text" class="form-control" readonly="readonly" id="nName" name="name" value="${dto.name}"> <br>  <!-- dto의 setter의 이름을 씀-->
+			<input type="text" class="form-control" readonly="readonly" id="nName" name="name" value="${member.id}"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
 			<div class="mb-3">

@@ -14,6 +14,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.main.board.BoardDTO;
+import com.iu.main.board.notice.NoticeDTO;
 import com.iu.main.util.Pager;
 
 @Controller
@@ -81,10 +82,30 @@ public class QnaController {
 		return "board/detail";
 	}
 	
+	
 	//update
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String setUpdate(QnaDTO qnaDTO, Model model)throws Exception{
+		BoardDTO boardDTO = qnaService.getDetail(qnaDTO);
+		model.addAttribute("dto",qnaDTO);
+		
+		return "board/update";
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String setUpdate(QnaDTO qnaDTO)throws Exception{
+		int result = qnaService.setUpdate(qnaDTO);
+		
+		return "redirect:./list";
+	}
 	
 	
 	//delete
-	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String setdelete(QnaDTO qnaDTO)throws Exception{
+		int result = qnaService.setDelete(qnaDTO);
+		
+		return "redirect:./list";
+	}
 
 }

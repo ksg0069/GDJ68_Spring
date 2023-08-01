@@ -72,14 +72,14 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		
-		return 0;
+		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 	
 	//delete
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 	
 	//hit

@@ -57,6 +57,7 @@
 	<a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a>
 	<a class="btn btn-danger" href="./delete?num=${dto.num}"> 삭제 </a> <br>
 	
+	
 	<c:if test="${board ne 'NOTICE'}">
 	<a class="btn btn-dark" href="./reply?num=${dto.num}"> 댓글 </a>
 	</c:if>

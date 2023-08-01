@@ -101,6 +101,8 @@
  	<delete id="setDelete" parameterType="NoticeDTO">
  		DELETE FROM NOTICE WHERE NOTICENUM = #{num}  
  	</delete>
+ 	
+ 	
  		
   
   	</mapper>
