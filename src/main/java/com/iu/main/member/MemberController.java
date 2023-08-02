@@ -55,12 +55,12 @@ public class MemberController {
 	}
  	
 	//update
-	@RequestMapping(value = "memberUpdate", method = RequestMethod.GET)
-	public void setMemberUpdate()throws Exception{
-		
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String setMemberUpdate()throws Exception{
+		return "member/update";
 	}
 	
-	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String setMemberUpdate(MemberDTO memberDTO, HttpSession session)throws Exception{
 		
 		MemberDTO sessionMember = (MemberDTO)session.getAttribute("member"); // setAttribute의값이  object 타입이므로 형변환 

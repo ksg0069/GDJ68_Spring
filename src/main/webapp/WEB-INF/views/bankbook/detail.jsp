@@ -42,6 +42,9 @@
 	<a href="./update?bookNum=${dto.bookNum}"> 수정 </a>
 	<a href="./delete?bookNum=${dto.bookNum }">삭제</a>
 
+	<button id="update">수정</button>
+	<button id="del" data-delete-name="bookNum" data-delete-num="${dto.bookNum}" >삭제</button>
+	
 	
 	<%-- <c:if test="${dto.bookSale == 1}"> 
 		<h1>판매중</h1>
@@ -50,5 +53,11 @@
 		<h1>판매 종료</h1>
 	</c:if> --%>
 
+	<script src="../resources/js/delete.js"></script>
+	<!-- <script>
+		setBookNum(${dto.bookNum});
+	</script> -->
+
+	
 </body>
 </html>

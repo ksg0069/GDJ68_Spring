@@ -17,7 +17,7 @@
  
  <section class="container mt-5">
  
- <form action="./memberUpdate" method="post">
+ <form action="./update" method="post">
  		<h1 class="mb-5">회원가입</h1>
  		<!-- id -->
 <!-- 		<div class="mb-3 ">

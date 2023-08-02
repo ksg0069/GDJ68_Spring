@@ -25,7 +25,7 @@
 		<p>${member.birth}</p>
 	</div>
 	
-	<a href="./memberUpdate"> 회원수정 </a>
+	<a href="./update"> 회원수정 </a>
 
 </body>
 </html>
