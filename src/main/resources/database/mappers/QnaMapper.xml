@@ -83,6 +83,7 @@
 	 </select>
 	 
 	 <resultMap type="QnaDTO" id="getDetailResult">
+	 
 	 	<id column="NUM" property="num"/>
 	 	<result column="NAME" property="name"/>
 	 	<result column="SUBJECT" property="subject"/>

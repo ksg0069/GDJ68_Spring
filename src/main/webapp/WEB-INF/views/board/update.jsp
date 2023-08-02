@@ -35,6 +35,14 @@
 			<textarea rows="" cols="" class="form-control" id="nContents" name="contents" >${dto.contents}</textarea>
 			</div>
 			
+			<div class="mb-3">
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<div class="input-group mb-3">
+					<input type="file" value="${f.originalName }" class="form-control">
+				</div>	
+			</c:forEach>
+			</div> 
+			
 		
 			<button class="btn btn-danger" type="submit">수정</button>
 	

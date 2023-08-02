@@ -16,7 +16,7 @@
 
 	
 <section class="container mt-5">
-	<h1 class="mb-4 text-center"  > NOTICE</h1>
+	<h1 class="mb-4 text-center"  > ${board }</h1>
 	
 	<table class="table">
 		<thead class="table-dark">
