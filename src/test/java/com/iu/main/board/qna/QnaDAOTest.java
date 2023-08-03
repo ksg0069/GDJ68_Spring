@@ -18,10 +18,13 @@ public class QnaDAOTest extends Mytest{
 	public void setAddTest()throws Exception{
 		
 		QnaDTO boardDTO = new QnaDTO();
-		boardDTO.setName("ksg");
-		boardDTO.setSubject("test2");
-		boardDTO.setContents("testContents2");
 		
+		for(int i=0; i<30; i++) {
+		boardDTO.setName("ksg");
+		boardDTO.setSubject("apple"+i);
+		boardDTO.setContents("agasdf"+i);
+		qnaDAO.setAdd(boardDTO);
+		}
 		int result = qnaDAO.setAdd(boardDTO);
 		assertEquals(1, result);
 	}

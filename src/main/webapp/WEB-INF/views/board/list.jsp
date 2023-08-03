@@ -51,18 +51,18 @@
 		  <ul class="pagination">
 		  <%-- <c:if test="${pager.pre }"> --%>
 		    <li class="page-item ${pager.pre?'':'disabled'}">
-		      <a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+		      <a class="page-link move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 		    </li>
 		    <%-- </c:if> --%>
 		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		    <li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+		    <li class="page-item"><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
 			</c:forEach>
 			
 <%-- 			<c:if test="${pager.next }"> --%>
 		    <li class="page-item ${pager.next?'':'disabled' }" >
-		      <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" aria-label="Next">
+		      <a class="page-link move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
@@ -71,11 +71,15 @@
 	</nav>
 	
 	<div class="input-group mb-3">
-		<form action="./list" method="get">
-	  	<select name="kind" class="form-select" aria-label="Default select example">
-			 <option value="name">Name</option>
-			 <option value="title">Subject</option>
-			 <option value="contents">Contents</option>
+		<form action="./list" method="get" id="frm">
+		
+		<input type="hidden" value="${pager.page}" id="page" name="page">
+			
+
+	  	<select name="kind" id="ki" class="form-select" data-kind="${pager.kind}" aria-label="Default select example">
+			 <option class="kind" value="name">Name</option>
+			 <option class="kind" value="title">Subject</option>
+			 <option class="kind" value="contents">Contents</option>
 		</select>
 		<input type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)">
 		<div class="col-auto">
@@ -88,7 +92,10 @@
 	
 	
 	
-	
+	<script src="/resources/js/list.js"></script>
+	<!-- <script>
+		setData("${pager.kind}");  //js가 변수로인식해서 '' 써야함
+	</script> -->
 	</section>
 </body>
 </html>

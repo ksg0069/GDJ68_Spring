@@ -19,7 +19,7 @@
 
 	<section class="container mt-5">
 	
-		<form action="./add" method="post" enctype="multipart/form-data">
+		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 		
 			
 		
@@ -28,9 +28,10 @@
 			<input type="text" class="form-control" id="nName" name="name" readonly="readonly" value="${member.id}"> <br>  <!-- dto의 setter의 이름을 씀-->
 			</div>
 			
+			
 			<div class="mb-3">
-			<label for="nTitle" class="form-label">제목</label>
-			<input type="text" class="form-control" id="nTitle" name="subject"> <br>
+			<label for="subject" class="form-label">제목</label>
+			<input type="text" class="form-control" id="subject" name="subject"> <br>
 			</div>
 			
 			<div class="mb-3">
@@ -67,11 +68,34 @@
 		
 		
 		
-			<button class="btn btn-danger" type="submit">등록</button>
+			<button class="btn btn-danger" type="button" id="btn">등록</button>
 	
 		
 		</form>
-	</section>	
+	</section>
+	
+	<script>
+		const btn = document.getElementById("btn");
+		const subject = document.getElementById("subject");
+		const frm = document.getElementById("frm");
+
+		btn.addEventListener("click", function(){
+
+			console.log(subject.value == "");
+			console.log(subject.value.length == 0);
+
+			if(subject.value==""){
+				alert("제목은 필수 입니다");
+				subject.focus();
+			}else{
+
+				frm.submit();
+			}
+
+		});
+
+
+	</script>
 
 </body>
 </html>

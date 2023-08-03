@@ -53,17 +53,21 @@
 	</table>
 	
 
-	<a class="btn btn-dark" href="./list"> 목록 </a>
-	<a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a>
-	<a class="btn btn-danger" href="./delete?num=${dto.num}"> 삭제 </a> <br>
+	<form id="frm" action="" method="">
+		<input type="hidden" name="num" value="${dto.num}">
+	</form>
 
-	<button type="button" id="del" data-delete-name="num" data-delete-num="${dto.num}" >삭제</button>
-	
-	<c:if test="${board ne 'NOTICE'}">
-	<a class="btn btn-dark" href="./reply?num=${dto.num}"> 댓글 </a>
-	</c:if>
+		<a class="btn btn-dark" href="./list"> 목록 </a>
 
-	
+		<!-- <a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a> -->
+		<button id="update" class="c1" data-url="update">수정</button>
+		
+		<button type="button" id="del" class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}" >삭제</button>
+		
+		<c:if test="${board ne 'NOTICE'}">
+		<!-- <a class="btn btn-dark" href="./reply?num=${dto.num}"> 댓글 </a> -->
+		<button id="reply" class="c1" data-url="reply">댓글</button>
+		</c:if>
 		
 		
 	</form>
