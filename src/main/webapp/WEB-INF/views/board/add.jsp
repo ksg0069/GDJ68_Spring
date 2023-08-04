@@ -40,33 +40,14 @@
 			</div>
 			
 							<!-- file -->
-			<div class="mb-3 ">
-			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">  
+			<div id="fileList" class="my-5"></div>
+
+			<div class="mb-3">
+				<button type="button" class="btn btn-outline-primary" id="fileAdd">File추가</button>
 			</div>
+		 
 			
-			<div class="mb-3 ">
-			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   
-			</div>
-				
-			<div class="mb-3 ">
-			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   
-			</div>
 			
-			<div class="mb-3 ">
-			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   
-			</div>
-			
-			<div class="mb-3 ">
-			<label for="pic" class="form-label">사진첨부</label>
-			<input type="file" class="form-control" id="pic" name="photos">   
-			</div>
-			
-		
-		
 		
 			<button class="btn btn-danger" type="button" id="btn">등록</button>
 	
@@ -74,6 +55,8 @@
 		</form>
 	</section>
 	
+	<script src="../resources/js/file.js"></script>
+
 	<script>
 		const btn = document.getElementById("btn");
 		const subject = document.getElementById("subject");

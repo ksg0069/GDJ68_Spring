@@ -39,30 +39,30 @@
 		<div id="pwResult"></div>
 		</div>
 		
-
+		<!-- pw check-->
 		<div class="mb-3 ">
 			<label for="pw2" class="form-label">PW</label>
 			<input type="password" class="form-control" id="pw2" name="pw2" placeholder="pw 재입력"> <br>  <!-- dto의 setter의 이름을 씀-->
-			<div id="d3"></div>	
+			<div id="pw2Result"></div>	
 		</div>
 
 		<!-- name -->
 		<div class="mb-3 ">
 		<label for="name" class="form-label">NAME</label>
 		<input type="text" class="form-control" id="name" name="name" placeholder="이름 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
-		<div id="d4"></div>
+		<div id="nameResult"></div>
 		</div>
 		<!-- email  -->
 		<div class="mb-3 ">
 		<label for="email" class="form-label">Email</label>
 		<input type="email" class="form-control" id="email" name="email" placeholder="Email 입력"> <br>  <!-- dto의 setter의 이름을 씀-->
-		<div id="d5"></div>
+		<div id="emailResult"></div>
 		</div>
 		<!-- birth -->
 		<div class="mb-3 ">
 		<label for="birth" class="form-label">생년월일</label>
 		<input type="date" class="form-control" id="birth" name="birth">   <!-- dto의 setter의 이름을 씀-->
-		<div id="d6"></div>
+		<div id="birthResult"></div>
 		</div>
 		
 		<!-- file -->
