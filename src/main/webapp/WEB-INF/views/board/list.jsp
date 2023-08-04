@@ -81,7 +81,7 @@
 			 <option class="kind" value="title">Subject</option>
 			 <option class="kind" value="contents">Contents</option>
 		</select>
-		<input type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)">
+		<input type="text" name="search" value="${pager.search}" class="form-control" aria-label="Amount (to the nearest dollar)">
 		<div class="col-auto">
 	    		<button type="submit" class="btn btn-primary">검색</button>
 	  	</div>
