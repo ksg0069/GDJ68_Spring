@@ -24,5 +24,7 @@
  	<typeAlias type="com.iu.main.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
  	<typeAlias type="com.iu.main.board.qna.QnaDTO" alias="QnaDTO"/>
  	
+ 	<typeAlias type="com.iu.main.bookAccount.BookAccountDTO" alias="BookAccountDTO"/>
+ 	
  </typeAliases>
 </configuration>				  

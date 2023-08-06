@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iu.main.bookAccount.BookAccountDAO">
+  
+  <!-- list  -->
+  <select id="getList" resultType="BookAccountDTO">
+ 	SELECT ID
+		FROM BOOKACCOUNT
+	ORDER BY ACCOUNTNUM DESC
+  </select>
+  
+  <!-- detail  -->
+  	  <select id="getDetail" resultType="BookAccountDTO" parameterType="BookAccountDTO">
+  	SELECT B.*
+		FROM BOOKACCOUNT B JOIN MEMBER M	
+							ON B.ID = M.ID
+				   		  JOIN BANKBOOK BB
+				   			ON B.BOOKNUM = BB.BOOKNUM
+		WHERE B.ACCOUNTNUM = #{accountNum}
+  </select>
+  
+  <!-- add  -->
+	<insert id="setAdd" parameterType="BookAccountDTO" >
+ 		<selectKey keyProperty="accountNum" resultType="Long" order="BEFORE">
+ 			SELECT BA_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO BOOKACCOUNT
+ 		VALUES (#{accountNum},#{id},#{bookNum},#{account},#{accountPassword},#{accountBalance})
+ 	</insert>
+ 	
+  <!-- update  -->
+  	<update id="setUpdate" parameterType="BookAccountDTO">
+  		UPDATE BOOKACCOUNT SET ACCOUNT=#{account}, ACCOUNTPASSWORD=#{accountPassword}, ACCOUNTBALANCE=#{accountBalance} 
+  		WHERE ACCOUNTNUM=#{accountNUM}
+  	</update>
+  	
+  <!-- delete  -->
+  	<delete id="setDelete" parameterType="BookAccountDTO">
+  		DELETE FROM BOOKACCOUNT WHERE ACCOUNTNUM=#{accountNum}  	
+  	</delete>
+  
+  
+  </mapper>
+
