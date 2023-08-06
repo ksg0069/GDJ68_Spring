@@ -22,19 +22,60 @@ public class BookAccoutDAOTest extends Mytest{
 //		assertNotEquals(0, ar.size());
 //}
 
+//	@Test
+//	public void addTest() throws Exception{
+//		BookAccountDTO bookAccountDTO = new BookAccountDTO();
+//			Calendar ca = Calendar.getInstance(); 
+//			long result = ca.getTimeInMillis();
+//			
+//			
+//			bookAccountDTO.setId("ksg");
+//			bookAccountDTO.setBookNum(240L);
+//			bookAccountDTO.setAccount(result);
+//			bookAccountDTO.setAccountPassword(145);
+//			bookAccountDTO.setAccountBalance(10000400l);
+//			bookAccountDAO.setAdd(bookAccountDTO);
+//			
+//			
+//}
+	
+//	@Test
+//	public void updateTest() throws Exception{
+//		BookAccountDTO bookAccountDTO = new BookAccountDTO();
+//			Calendar ca = Calendar.getInstance(); 
+//			long result = ca.getTimeInMillis();
+//			
+//			
+//		
+//			bookAccountDTO.setAccountNum(1l);
+//			bookAccountDTO.setAccount(result);
+//			bookAccountDTO.setAccountPassword(1456);
+//			bookAccountDTO.setAccountBalance(10000400l);
+//			bookAccountDAO.setUpdate(bookAccountDTO);
+//			
+//			
+//}
+	
+//	@Test
+//	public void deleteTest() throws Exception{
+//		BookAccountDTO bookAccountDTO = new BookAccountDTO();
+//	
+//			
+//			bookAccountDTO.setAccountNum(1l);
+//		
+//			bookAccountDAO.setDelete(bookAccountDTO);
+//			
+//			
+//}
+	
 	@Test
-	public void addTest() throws Exception{
+	public void detailTest() throws Exception{
 		BookAccountDTO bookAccountDTO = new BookAccountDTO();
-			Calendar ca = Calendar.getInstance(); 
-			long result = ca.getTimeInMillis();
+	
+			bookAccountDTO.setAccountNum(1l);
 			
-			bookAccountDTO.setId("ksg");
-			bookAccountDTO.setBookNum(240L);
-			bookAccountDTO.setAccount(result);
-			bookAccountDTO.setAccountPassword(145);
-			bookAccountDTO.setAccountBalance(10000400l);
-			bookAccountDAO.setAdd(bookAccountDTO);
-			
+			bookAccountDTO = bookAccountDAO.getDetail(bookAccountDTO);
+			assertNotEquals(0, bookAccountDTO);
 			
 }
 }

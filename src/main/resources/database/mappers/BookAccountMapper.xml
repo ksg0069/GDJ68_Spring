@@ -35,7 +35,7 @@
   <!-- update  -->
   	<update id="setUpdate" parameterType="BookAccountDTO">
   		UPDATE BOOKACCOUNT SET ACCOUNT=#{account}, ACCOUNTPASSWORD=#{accountPassword}, ACCOUNTBALANCE=#{accountBalance} 
-  		WHERE ACCOUNTNUM=#{accountNUM}
+  		WHERE ACCOUNTNUM=#{accountNum}
   	</update>
   	
   <!-- delete  -->
