@@ -15,10 +15,7 @@
 <h1>mypage</h1>
 
 	<div>
-		<p>
-			<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
-		</p>
-	
+
 		<p>id: ${member.id}</p>
 		<p>name: ${member.name }</p>
 		<p>${member.email}</p>
@@ -27,5 +24,38 @@
 	
 	<a href="./update"> 회원수정 </a>
 
+	<div id="productList">
+
+	</div>
+
+
+<script>
+	const productList = document.getElementById("productList");
+	
+	getList(2);
+
+	productList.addEventListener("click", function(event){
+		if(event.target.classList.contains("move")){
+			alert("list");
+		}
+	})
+
+	function getList(page){
+
+		fetch("../bookAccount/list?page="+page, {
+			method:"get"
+			
+		})
+		.then((response)=>{
+			return response.text();
+		})
+		.then((r)=>{
+			productList.innerHTML=r;
+			console.log(r);
+		});
+		;
+	}
+
+</script>
 </body>
 </html>

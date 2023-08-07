@@ -6,12 +6,27 @@
   
   <mapper namespace="com.iu.main.bookAccount.BookAccountDAO">
   
-  <!-- list  -->
-  <select id="getList" resultType="BookAccountDTO">
- 	SELECT ID
-		FROM BOOKACCOUNT
-	ORDER BY ACCOUNTNUM DESC
+  
+  <select id="getTotal" resultType="Long">
+	SELECT COUNT(ACCOUNTNUM) FROM BOOKACCOUNT
   </select>
+  <!-- list  -->
+  <select id="getList" parameterType="Map" resultType="BookAccountDTO" > 
+  
+  SELECT *
+  FROM
+  (SELECT ROWNUM R, B.*
+ 		FROM
+ 		(SELECT *
+				FROM BOOKACCOUNT
+	 	 	 WHERE ID =#{member.id}
+	 		 ORDER BY ACCOUNTNUM DESC	
+	  	 ) B
+	 )
+   WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+  </select>
+  
+  
   
   <!-- detail  -->
   	  <select id="getDetail" resultType="BookAccountDTO" parameterType="BookAccountDTO">
@@ -25,11 +40,8 @@
   
   <!-- add  -->
 	<insert id="setAdd" parameterType="BookAccountDTO" >
- 		<selectKey keyProperty="accountNum" resultType="Long" order="BEFORE">
- 			SELECT BA_SEQ.NEXTVAL FROM DUAL
- 		</selectKey>
  		INSERT INTO BOOKACCOUNT
- 		VALUES (#{accountNum},#{id},#{bookNum},#{account},#{accountPassword},#{accountBalance})
+ 		VALUES (BA_SEQ.NEXTVAL,#{id},#{bookNum},#{account},#{accountPassword},#{accountBalance},sysdate)
  	</insert>
  	
   <!-- update  -->

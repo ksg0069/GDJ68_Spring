@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.main.Mytest;
 import com.iu.main.board.notice.NoticeDTO;
+import com.iu.main.member.MemberDAO;
+import com.iu.main.member.MemberDTO;
 
 public class BookAccoutDAOTest extends Mytest{
 
@@ -18,26 +20,33 @@ public class BookAccoutDAOTest extends Mytest{
 	
 //	@Test
 //	public void getList() throws Exception{	
-//		List<BookAccountDTO> ar= bookAccountDAO.getList();
-//		assertNotEquals(0, ar.size());
+//		MemberDTO memberDTO = new MemberDTO();
+//		memberDTO.setId("ksg");
+//		
+//		List<BookAccountDTO> ar= bookAccountDAO.getList(memberDTO);
+//		assertEquals(0, ar.size());
 //}
+	
 
-//	@Test
-//	public void addTest() throws Exception{
-//		BookAccountDTO bookAccountDTO = new BookAccountDTO();
-//			Calendar ca = Calendar.getInstance(); 
-//			long result = ca.getTimeInMillis();
-//			
-//			
-//			bookAccountDTO.setId("ksg");
-//			bookAccountDTO.setBookNum(240L);
-//			bookAccountDTO.setAccount(result);
-//			bookAccountDTO.setAccountPassword(145);
-//			bookAccountDTO.setAccountBalance(10000400l);
-//			bookAccountDAO.setAdd(bookAccountDTO);
-//			
-//			
-//}
+	@Test
+	public void addTest() throws Exception{
+		BookAccountDTO bookAccountDTO = new BookAccountDTO();
+			Calendar ca = Calendar.getInstance(); 
+			long result = ca.getTimeInMillis();
+			
+			
+			bookAccountDTO.setId("ksg9797");
+			bookAccountDTO.setBookNum(193L);
+			bookAccountDTO.setAccount(result);
+			bookAccountDTO.setAccountPassword("0657");
+			bookAccountDTO.setAccountBalance(0L);
+			int result1 = bookAccountDAO.setAdd(bookAccountDTO);
+			
+			assertNotEquals(0, result1);
+		    
+			
+			
+}
 	
 //	@Test
 //	public void updateTest() throws Exception{
@@ -68,14 +77,14 @@ public class BookAccoutDAOTest extends Mytest{
 //			
 //}
 	
-	@Test
-	public void detailTest() throws Exception{
-		BookAccountDTO bookAccountDTO = new BookAccountDTO();
-	
-			bookAccountDTO.setAccountNum(1l);
-			
-			bookAccountDTO = bookAccountDAO.getDetail(bookAccountDTO);
-			assertNotEquals(0, bookAccountDTO);
-			
-}
+//	@Test
+//	public void detailTest() throws Exception{
+//		BookAccountDTO bookAccountDTO = new BookAccountDTO();
+//	
+//			bookAccountDTO.setAccountNum(1l);
+//			
+//			bookAccountDTO = bookAccountDAO.getDetail(bookAccountDTO);
+//			assertNotEquals(0, bookAccountDTO);
+//			
+//}
 }

@@ -77,7 +77,9 @@
 	<a class="btn btn-danger" href="./add"> 상품등록 </a>
 	</section>
 	
+	<button id="list">GetList</button>
+	
 
-
+	<script type="text/javascript" src="../resources/js/bookList.js"></script>
 </body>
 </html>

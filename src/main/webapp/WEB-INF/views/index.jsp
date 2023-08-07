@@ -61,7 +61,7 @@
 	</div>
 	
 	
-	<img alt="" src="/resources/upload/member/img3.jpg">
+
 	
 	
 
