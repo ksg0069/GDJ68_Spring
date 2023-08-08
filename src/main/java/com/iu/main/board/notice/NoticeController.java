@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,7 @@ public class NoticeController {
 		return "NOTICE";
 	}
 	
+
 	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET )
 	public ModelAndView getList(ModelAndView mv,Pager pager)throws Exception{		
@@ -86,14 +88,14 @@ public class NoticeController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
 		BoardDTO boardDTO = noticeService.getDetail(noticeDTO);
-		model.addAttribute("dto",noticeDTO);
+		model.addAttribute("dto",boardDTO);
 		
 		return "board/update";
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String setUpdate(NoticeDTO noticeDTO)throws Exception{
-		int result = noticeService.setUpdate(noticeDTO);
+	public String setUpdate(NoticeDTO noticeDTO, MultipartFile[] photos,HttpSession session )throws Exception{
+		int result = noticeService.setUpdate(noticeDTO,photos, session);
 		
 		return "redirect:./list";
 	}
@@ -104,6 +106,15 @@ public class NoticeController {
 		int result = noticeService.setDelete(noticeDTO);
 		
 		return "redirect:./list";
+	}
+	
+	//filedel
+	@GetMapping("fileDelete")
+	public String setFileDelete(NoticeFileDTO noticeFileDTO, Model model, HttpSession session)throws Exception{
+		int result = noticeService.setFileDelete(noticeFileDTO,session);
+		model.addAttribute("result",result);
+		return "commons/ajaxResult";
+		
 	}
 	
 	

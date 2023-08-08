@@ -23,6 +23,10 @@ public class MemberService {
 	private FileManger fileManger;
 	
 
+	//id검증
+	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getId(memberDTO);
+	}
 	
 	//회원가입
 	public int setJoin(MemberDTO memberDTO,MultipartFile multipartFile ,HttpSession session)throws Exception{

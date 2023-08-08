@@ -60,7 +60,7 @@
 		<a class="btn btn-dark" href="./list"> 목록 </a>
 
 		<!-- <a class="btn btn-dark" href="./update?num=${dto.num }"> 수정 </a> -->
-		<button id="update" class="c1" data-url="update">수정</button>
+		<button id="update" class="c1" data-url="./update">수정</button>
 		
 		<button type="button" id="del" class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}" >삭제</button>
 		

@@ -32,11 +32,14 @@
 <script>
 	const productList = document.getElementById("productList");
 	
-	getList(2);
+	getList(1);
 
 	productList.addEventListener("click", function(event){
 		if(event.target.classList.contains("move")){
-			alert("list");
+			let page = event.target.getAttribute("data-num");
+			
+			getList(page);
+			
 		}
 	})
 
@@ -50,8 +53,9 @@
 			return response.text();
 		})
 		.then((r)=>{
+			
 			productList.innerHTML=r;
-			console.log(r);
+			
 		});
 		;
 	}

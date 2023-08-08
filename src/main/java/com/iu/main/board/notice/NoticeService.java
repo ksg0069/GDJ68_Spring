@@ -21,6 +21,10 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private FileManger fileManger;
+
+	
+	
+
 	
 	//list
 	public List<BoardDTO> getList(Pager pager) throws Exception{
@@ -62,15 +66,47 @@ public class NoticeService implements BoardService{
 	}
 	
 	//update
-	public int setUpdate(BoardDTO boardDTO)throws Exception{
-		return noticeDAO.setUpdate(boardDTO);
+	public int setUpdate(BoardDTO boardDTO,MultipartFile[] files,HttpSession session )throws Exception{
+		String path = "/resources/upload/board/";
+		
+		int result = noticeDAO.setUpdate(boardDTO);
+		
+		
+		for(MultipartFile multipartFile: files) {
 				
-	}
+				if(multipartFile.isEmpty()) {
+					continue;
+				}
+				
+				String fileName = fileManger.fileSave(path, multipartFile, session);
+				NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+				noticeFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+				noticeFileDTO.setFileName(fileName);
+				noticeFileDTO.setNoticeNum(boardDTO.getNum());
+				result = noticeDAO.setFileAdd(noticeFileDTO);
+			}
+			
+			
+			return noticeDAO.setUpdate(boardDTO);
+					
+		}
 	
 	//delete
 	public int setDelete(BoardDTO boardDTO)throws Exception{
 		return noticeDAO.setDelete(boardDTO);
 				
+	}
+	
+	//filedel,
+	public int setFileDelete(NoticeFileDTO noticeFileDTO, HttpSession session)throws Exception{
+		//폴더 파일 삭제
+		noticeFileDTO = noticeDAO.getFileDetail(noticeFileDTO);
+		boolean flag = fileManger.fileDelete(noticeFileDTO, "/resources/upload/board",session );
+		if(flag) {
+			return noticeDAO.setFileDelete(noticeFileDTO); //de 삭제
+		}
+		return 0;
+		
 	}
 
 }

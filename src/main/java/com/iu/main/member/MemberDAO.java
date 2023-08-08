@@ -11,6 +11,10 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.main.member.MemberDAO.";
 	
+	//id 검증
+	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getId",memberDTO);
+	}
 	
 	//파일업로드
 	public int setFileJoin(MemberFileDTO memberFileDTO)throws Exception{

@@ -80,10 +80,16 @@
 	</div>
   </div>
 
+  <div id="comment"></div>
+
+  
+
 	<script src="../resources/js/delete.js"></script>
 	<!-- <script>
 		setBookNum(${dto.bookNum});
 	</script> -->
+
+
 
 	<script type="text/javascript">
 		 const add =document.getElementById("add");
@@ -154,8 +160,8 @@
 			}
 			}
 		 }
-	</script> 
-
+	</script>
 	
+
 </body>
 </html>

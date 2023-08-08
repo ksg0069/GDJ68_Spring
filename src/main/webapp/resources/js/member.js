@@ -24,26 +24,51 @@ let pw2CheckResult=false;
 let nameCheckResult=false;
 let emailCheckResult=false;
 
-let checkResults= [false,false,false,false,false,false];
+let checkResults= [false,false,false,false,false,false,false];
 
 
 //1 id
 id.addEventListener("blur", function(){
     
-    console.log(id.id);
+
     const idResult = document.getElementById("idResult");
+    
 
-    if(id.value == '' || id.value.length > 10){
-        idResult.innerHTML="id는 비어있으면 x, 10글자미만";
-        idResult.className="f";
-        checkResults[0]=false;
-     
-    }else{
-        idResult.innerText="올바른 아이디 입니다";
-        idResult.className="s";
-        checkResults[0]=true;
+    fetch("./idCheck?id="+id.value, {
+        method:"get"
+    })
+    .then((response)=>{
+        return response.text();
+    })
+    .then((r)=>{
 
-    }
+        if(r.trim()=='1'){
+           
+            if(id.value == '' || id.value.length > 10){
+                idResult.innerHTML="id는 비어있으면 x, 10글자미만";
+                idResult.className="f";
+                checkResults[0]=false;
+                checkResults[6]=false;
+             
+            }else{
+                idResult.innerText="올바른 아이디 입니다";
+                idResult.className="s";
+                checkResults[0]=true;
+                checkResults[6]=true;
+        
+            }
+
+        }else{
+            idResult.innerHTML="이미 사용중인 ID 입니다";
+            idResult.className="f";
+            checkResults[0]=false;
+            checkResults[6]=false;
+        }
+    })
+  
+    
+
+   
     // if(id.value.length == 0){
 
     //     d1.innerText="아이디를 입력하세요";

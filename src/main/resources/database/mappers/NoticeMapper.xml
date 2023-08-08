@@ -92,7 +92,7 @@
  	
  	<!-- update  -->
  	<update id="setUpdate" parameterType="NoticeDTO">
-		UPDATE NOTICE SET NOTICETITLE=#{title}, NOTICECONTENTS=#{contents} WHERE NOTICENUM=#{num}
+		UPDATE NOTICE SET NOTICETITLE=#{subject}, NOTICECONTENTS=#{contents} WHERE NOTICENUM=#{num}
 		
 		  	
  	</update>
@@ -101,6 +101,18 @@
  	<delete id="setDelete" parameterType="NoticeDTO">
  		DELETE FROM NOTICE WHERE NOTICENUM = #{num}  
  	</delete>
+ 	
+ 	<!--fiel del  -->
+ 	<delete id="setFileDelete" parameterType="NoticeFileDTO">
+ 		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+ 	</delete>
+ 	
+ 	<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
+ 		SELECT FILENUM, FILENAME
+ 		FROM NOTICEFILE
+ 		WHERE FILENUM=#{fileNum}	
+ 		
+ 	</select>
  	
  	
  		

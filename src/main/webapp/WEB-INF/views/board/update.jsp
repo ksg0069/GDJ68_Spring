@@ -17,7 +17,7 @@
 
 <section class="container mt-5">
 	
-		<form action="./update" method="post">
+		<form action="./update" method="post" enctype="multipart/form-data">
 		
 			<input type="hidden" name="num" readonly="readonly"  value="${dto.num }">
 			<div class="mb-3">
@@ -34,29 +34,31 @@
 			<label for="nContents" class="form-label">본문</label>
 			<textarea rows="" cols="" class="form-control" id="nContents" name="contents" >${dto.contents}</textarea>
 			</div>
-			
+
 			<div class="mb-3">
-			<c:forEach items="${dto.fileDTOs}" var="f">
-				<div class="input-group mb-3">
-					<input type="file" value="${f.originalName }" class="form-control">
-				</div>	
-			</c:forEach>
-			</div> 
+				<button type="button" class="btn btn-outline-primary" id="fileAdd">File추가</button>
+			</div>
 			
-		
+			
+			<div  id ="fileList" class="mb-3">
+			</div>
+
+			<div>
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<div class="alert alert-primary" role="alert">
+					${f.originalName}
+				 </div>
+				 <span class="delets" data-delete-num="${f.fileNum}">X</span>
+			</c:forEach>
+			</div>
+
+
 			<button class="btn btn-danger" type="submit">수정</button>
 	
 		
 		</form>
 	</section>	
-
 		
-
-		
-		
-
-	
-	</form>
-
+		<script type="text/javascript" src="../resources/js/file.js"></script>
 </body>
 </html>

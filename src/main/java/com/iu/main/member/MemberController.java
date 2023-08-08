@@ -5,7 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
@@ -21,6 +24,8 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
+	
+	
 	//login form 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String getLogin() throws Exception{
@@ -31,6 +36,8 @@ public class MemberController {
 	//db
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String getLogin(MemberDTO memberDTO, HttpSession session ) throws Exception{ //선언한 dto setter의 이름과 넘어온 파라미터의 이름이 같아야함, 
+		
+	
 		memberDTO = memberService.getLogin(memberDTO);
 		
 		if(memberDTO != null) {
@@ -77,6 +84,7 @@ public class MemberController {
 	//회원가입
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String setJoin(MemberDTO memberDTO, MultipartFile pic, HttpSession session) throws Exception{
+			
 		int result = memberService.setJoin(memberDTO, pic,session);
 		System.out.println(pic.getName());
 		System.out.println(pic.getOriginalFilename());
@@ -93,6 +101,20 @@ public class MemberController {
 		return "member/join";
 	}
 	
+	@GetMapping("idCheck")
+	public String getId(MemberDTO memberDTO, Model model) throws Exception{
+		
+		memberDTO = memberService.getId(memberDTO);
+		int result=0; //중복
+		
+		if(memberDTO == null) {
+			result=1; //중복x
+		}
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
+
+	}
 
 	
 

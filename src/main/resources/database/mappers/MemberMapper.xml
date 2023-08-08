@@ -11,6 +11,13 @@
   		INSERT INTO MEMBERFILE VALUES(MF_SEQ.NEXTVAL,#{id},#{fileName},#{originalName})
   	</insert>
   	
+  	<!--id 검증 -->
+  	 <select id="getId" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT ID
+  		FROM MEMBER
+  		WHERE ID = #{id}
+  	</select>
+  	
   	<!-- 회원가입  -->
   	<insert id="setJoin" parameterType="MemberDTO">
   		INSERT INTO MEMBER

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.main.board.BoardDAO;
@@ -17,6 +18,8 @@ public class NoticeDAO implements BoardDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.main.board.notice.NoticeDAO.";
+
+	
 
 	
 	//total
@@ -67,6 +70,15 @@ public class NoticeDAO implements BoardDAO{
 	public int setDelete(BoardDTO boardDTO)throws Exception{
 		
 		return sqlSession.update(NAMESPACE+"setDelete",boardDTO);
+	}
+	//filedel
+	public int setFileDelete(NoticeFileDTO noticeFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", noticeFileDTO);
+	}
+	
+	//file detail
+	public NoticeFileDTO getFileDetail(NoticeFileDTO noticeFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail",noticeFileDTO);
 	}
 
 	@Override
