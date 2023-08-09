@@ -14,7 +14,7 @@ public class BookCommentDAO {
 	
 	private final String NAMESPACE = "com.iu.main.bookComment.BookCommentDAO.";
 	
-	public List<BookCommentDTO> getList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<BookCommentDTO> getList(BookCommentDTO bookCommentDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList",bookCommentDTO);
 	}
 }

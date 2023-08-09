@@ -4,7 +4,7 @@ let del = document.getElementById("del");
 const c1 = document.getElementsByClassName("c1");
 const frm = document.getElementById("frm");
 
-
+const comment = document.getElementById("comment");
 //1. 함수 사용
 // function setBookNum(num){
 //     bookNum=bookNum;
@@ -52,5 +52,17 @@ for(c of c1){
     });
 }
 
+let num = comment.getAttribute("data-num");
+
+fetch("../bookComment/list?bookNum="+num, {
+    method:"get"
+})
+.then((response) =>{
+    return response.text();
+})
+.then((r)=>{
+   
+    comment.innerHTML=r;
+})
 
 

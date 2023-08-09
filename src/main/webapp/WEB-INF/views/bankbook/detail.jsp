@@ -80,7 +80,7 @@
 	</div>
   </div>
 
-  <div id="comment"></div>
+  <div id="comment" data-num=${dto.bookNum}></div>
 
   
 

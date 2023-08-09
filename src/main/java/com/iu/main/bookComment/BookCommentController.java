@@ -16,8 +16,8 @@ public class BookCommentController {
 	private BookCommentService bookCommentService;
 	
 	@GetMapping("list")
-	public String getList(Model model)throws Exception{
-		List<BookCommentDTO> ar = bookCommentService.getList();
+	public String getList(BookCommentDTO bookCommentDTO, Model model)throws Exception{
+		List<BookCommentDTO> ar = bookCommentService.getList(bookCommentDTO);
 		model.addAttribute("list",ar);
 		
 		return "bookComment/list";

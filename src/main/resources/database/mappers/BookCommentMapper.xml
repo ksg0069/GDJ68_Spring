@@ -6,10 +6,12 @@
   
   <mapper namespace="com.iu.main.bookComment.BookCommentDAO">
   
-  <select id="getList" resultType="BookCommentDTO">
+  <select id="getList" resultType="BookCommentDTO" parameterType="BookCommentDTO">
   	SELECT *
   	FROM BOOKCOMMENT
+  	WHERE BOOKNUM=${bookNum}
   	ORDER BY NUM DESC
+  	
   </select>
   </mapper>
 

@@ -11,9 +11,9 @@ public class BookCommentService {
 	@Autowired
 	private BookCommentDAO bookCommentDAO;
 	
-	public List<BookCommentDTO> getList()throws Exception{
+	public List<BookCommentDTO> getList(BookCommentDTO bookCommentDTO)throws Exception{
 		
-		return bookCommentDAO.getList();
+		return bookCommentDAO.getList(bookCommentDTO);
 	}
 
 }
