@@ -6,8 +6,8 @@
   
   <mapper namespace="com.iu.main.bankBook.BankBookDAO"> <!-- dao의 클래스명으로 적음 풀패키지명으로 적음, 마음대로 적어도 됨 --> 
   
-  
-  
+    
+  <!-- BANKBOOK -->
   	<sql id="searchSql">
   		<choose>
 				<when test="kind == 'name'">

@@ -8,9 +8,7 @@ public class BookCommentDTO {
 	private String id;
 	private String contents;
 	private Date createDate;
-	private Long ref;
-	private Long step;
-	private Long depth;
+	
 	
 	public Long getNum() {
 		return num;
@@ -42,24 +40,7 @@ public class BookCommentDTO {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public Long getRef() {
-		return ref;
-	}
-	public void setRef(Long ref) {
-		this.ref = ref;
-	}
-	public Long getStep() {
-		return step;
-	}
-	public void setStep(Long step) {
-		this.step = step;
-	}
-	public Long getDepth() {
-		return depth;
-	}
-	public void setDepth(Long depth) {
-		this.depth = depth;
-	}
+	
 	
 	
 	

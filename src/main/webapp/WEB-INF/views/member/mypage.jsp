@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/bootstrap.jsp"></c:import>
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -30,35 +31,59 @@
 
 
 <script>
-	const productList = document.getElementById("productList");
+	// const productList = document.getElementById("productList");
 	
-	getList(1);
+	 getList(1);
 
-	productList.addEventListener("click", function(event){
-		if(event.target.classList.contains("move")){
-			let page = event.target.getAttribute("data-num");
+	// productList.addEventListener("click", function(event){
+	// 	if(event.target.classList.contains("move")){
+	// 		let page = event.target.getAttribute("data-num");
 			
-			getList(page);
+	// 		getList(page);
 			
-		}
+	// 	}
+	// })
+
+	// function getList(page){
+
+	// 	fetch("../bookAccount/list?page="+page, {
+	// 		method:"get"
+			
+	// 	})
+	// 	.then((response)=>{
+	// 		return response.text();
+	// 	})
+	// 	.then((r)=>{
+			
+	// 		productList.innerHTML=r;
+			
+	// 	});
+	// 	;
+	// }
+
+	$("#productList").on("click", ".move",function(){
+
+		let page = $(this).attr("data-num")
+	
+		getList(page);
 	})
 
 	function getList(page){
+	$.ajax({
+		type:'get',
+		url:'../bookAccount/list',
+		data:{
+			page:page
+		},
+		success:function(result){
 
-		fetch("../bookAccount/list?page="+page, {
-			method:"get"
-			
-		})
-		.then((response)=>{
-			return response.text();
-		})
-		.then((r)=>{
-			
-			productList.innerHTML=r;
-			
-		});
-		;
-	}
+			$("#productList").html(result.trim())
+		},
+		error:function(){
+			alert("관리자에게 문의")
+		}
+	})
+}
 
 </script>
 </body>

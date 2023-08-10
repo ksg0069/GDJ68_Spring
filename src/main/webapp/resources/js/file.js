@@ -45,20 +45,30 @@ for(del of delets){
     })
 }
 
-fileList.addEventListener("click", function(event){
-    console.log(event.target);
-    let cl = event.target.classList;
-    console.log(cl);
-    if(event.target.classList.contains("df") ){
-        let deleteID = event.target.getAttribute("data-id");
+// fileList.addEventListener("click", function(event){
+//     console.log(event.target);
+//     let cl = event.target.classList;
+//     console.log(cl);
+//     if(event.target.classList.contains("df") ){
+//         let deleteID = event.target.getAttribute("data-id");
         
-        document.getElementById(deleteID).remove();
-        count--;
-    }
+//         document.getElementById(deleteID).remove();
+//         count--;
+//     }
 
+// })
+
+$("#fileList").on("click",".df",function(){
+
+    // let deleteId = $(this).attr("data-id")
+    // $("#"+deleteId).remove();
+
+    console.log($(this).parent());
+    $(this).parent().remove();
+    count--;
 })
 
-
+/*
 fileAdd.addEventListener("click", function(){
 
     if(count>=max){
@@ -129,7 +139,28 @@ fileAdd.addEventListener("click", function(){
 
     idx++;
 });
+*/
 
+$("#fileAdd").click(function(){
 
+    if(count>=max){
+        alert("최대 5개만 가능");
+        return;
+    }
+    count++;
+
+    let r = '<div class="mb-3" id="file"'+idx+'>';
+
+    r = r.concat('<label for="pic" class="form-label">사진첨부</label>');
+
+    r = r.concat('<input type="file" class="form-control" id="pic" name="photos"');
+   
+    r = r.concat('</div>');
+
+    r= r.concat('<span class="df" data-id="file" '+ idx +'>x</span>')
+
+    $("#fileList").append(r);
+    idx++;
+})
 
 

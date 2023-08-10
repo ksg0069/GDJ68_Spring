@@ -50,7 +50,7 @@
   		</ul>
 	</nav>
 	
-	<script src="/resources/js/list.js"></script>
+	<!-- <script src="/resources/js/list.js"></script> -->
 	<!-- <script>
 		setData("${pager.kind}");  //js가 변수로인식해서 '' 써야함
 	</script> -->

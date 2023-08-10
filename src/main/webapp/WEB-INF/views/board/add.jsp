@@ -40,7 +40,8 @@
 			</div>
 			
 							<!-- file -->
-			<div id="fileList" class="my-5"></div>
+			<div id="fileList" class="my-5">
+			</div>
 
 			<div class="mb-3">
 				<button type="button" class="btn btn-outline-primary" id="fileAdd">File추가</button>
@@ -82,3 +83,4 @@
 
 </body>
 </html>
+

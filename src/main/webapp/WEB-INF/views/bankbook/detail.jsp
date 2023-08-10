@@ -56,7 +56,26 @@
 	</c:if> --%>
 	
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">상품가입</button>
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">상품가입</button> -->
+
+  <!-- 댓글 -->
+	<div>
+		<div class="mb-3 ">
+			<label for="pw" class="form-label"></label>
+			<textarea class="form-control" id="comment" ></textarea>
+			<button id ="commentAdd">댓글등록</button>
+		</div>
+
+		<div id="commentList">
+			<table>
+				
+
+			</table>
+
+
+		</div>
+
+	</div>
   
   <!-- Modal -->
   <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,41 +111,75 @@
 
 
 	<script type="text/javascript">
-		 const add =document.getElementById("add");
+		//  const add =document.getElementById("add");
 
-		 add.addEventListener("click", function(){
+		//  add.addEventListener("click", function(){
 
-		 	let bookNum= add.getAttribute("data-add-num");
-			let pw = document.getElementById("pw").value;
-			// ajax1(bookNum, pw);
-			ajax2(bookNum,pw);
+		//  	let bookNum= add.getAttribute("data-add-num");
+		// 	let pw = document.getElementById("pw").value;
+		// 	// ajax1(bookNum, pw);
+		// 	ajax2(bookNum,pw);
 		
-		 });
+		//  });
 		 
-		 function ajax2(bookNum, pw){
+		//  function ajax2(bookNum, pw){
 
-			fetch("../bookAccount/add", {
-				method:"post",
-				body:"bookNum="+bookNum+"&accountPassword="+pw,
-				headers:{
-					"Content-type": "application/x-www-form-urlencoded"
-				}
+		// 	fetch("../bookAccount/add", {
+		// 		method:"post",
+		// 		body:"bookNum="+bookNum+"&accountPassword="+pw,
+		// 		headers:{
+		// 			"Content-type": "application/x-www-form-urlencoded"
+		// 		}
 
-			})
-			.then((response)=>{ //fetch를하고난 다음에
-				return response.text();
-			})
-			.then((r)=>{
-				if(r>0){
-					alert("가입완료");
+		// 	})
+		// 	.then((response)=>{ //fetch를하고난 다음에
+		// 		return response.text();
+		// 	})
+		// 	.then((r)=>{
+		// 		if(r>0){
+		// 			alert("가입완료");
+		// 		}else{
+		// 			alert("가입실패");
+		// 		}
+
+		// 		location.href="../";
+		// 	})
+
+		//  }
+		$("#add").click(function(){
+
+			let bookNum = $(this).attr("data-add-num");
+			let pw = $("#pw").val();
+
+			ajax2(bookNum,pw);
+
+		})
+
+		function ajax2(bookNum, pw){
+
+			$.ajax({
+				type:"post",
+				url:"../bookAccount/add",	
+				data:{
+					bookNum:bookNum,
+					accountPassword:pw
+				},
+				success:function(r){
+					if(r>0){
+		 			alert("가입완료");
 				}else{
 					alert("가입실패");
+		 		}
+
+		 		location.href="../";
+				},
+				error:function(){
+					alert("관리자 문의")
 				}
-
-				location.href="../";
 			})
+		}
 
-		 }
+
 
 		 function ajax1(bookNum, pw){
 			//1. 

@@ -6,6 +6,7 @@
 
 <!-- header  -->
 	<header>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" >
 		 <div class="container-fluid">
 		    <a class="navbar-brand" href="#">Navbar</a>

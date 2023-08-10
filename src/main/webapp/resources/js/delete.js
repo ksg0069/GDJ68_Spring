@@ -52,17 +52,17 @@ for(c of c1){
     });
 }
 
-let num = comment.getAttribute("data-num");
+// let num = comment.getAttribute("data-num");
 
-fetch("../bookComment/list?bookNum="+num, {
-    method:"get"
-})
-.then((response) =>{
-    return response.text();
-})
-.then((r)=>{
+// fetch("../bookComment/list?bookNum="+num, {
+//     method:"get"
+// })
+// .then((response) =>{
+//     return response.text();
+// })
+// .then((r)=>{
    
-    comment.innerHTML=r;
-})
+//     comment.innerHTML=r;
+// })
 
 
