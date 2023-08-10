@@ -3,18 +3,16 @@ package com.iu.main.bookComment;
 import java.sql.Date;
 
 public class BookCommentDTO {
-	private Long num;
+	private Long commentNum;
 	private Long bookNum;
 	private String id;
-	private String contents;
-	private Date createDate;
-	
-	
-	public Long getNum() {
-		return num;
+	private String commentContents;
+	private Date commentDate;
+	public Long getCommentNum() {
+		return commentNum;
 	}
-	public void setNum(Long num) {
-		this.num = num;
+	public void setCommentNum(Long commentNum) {
+		this.commentNum = commentNum;
 	}
 	public Long getBookNum() {
 		return bookNum;
@@ -28,18 +26,20 @@ public class BookCommentDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getContents() {
-		return contents;
+	public String getCommentContents() {
+		return commentContents;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setCommentContents(String commentContents) {
+		this.commentContents = commentContents;
 	}
-	public Date getCreateDate() {
-		return createDate;
+	public Date getCommentDate() {
+		return commentDate;
 	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCommentDate(Date commentDate) {
+		this.commentDate = commentDate;
 	}
+	
+	
 	
 	
 	

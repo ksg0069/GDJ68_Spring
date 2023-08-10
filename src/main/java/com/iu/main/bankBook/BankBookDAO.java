@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.main.bookComment.BookCommentDTO;
 import com.iu.main.member.MemberFileDTO;
 import com.iu.main.util.Pager;
 
@@ -22,6 +23,13 @@ public class BankBookDAO {
 	private final String NAMESPACE="com.iu.main.bankBook.BankBookDAO.";  //mapper의 namespace와 동일한 이름
 	
 	
+	//------- Comment
+		public long getCommentTotal(BookCommentDTO bookCommentDTO)throws Exception{
+			return sqlSession.selectOne(NAMESPACE+"getCommentTotal", bookCommentDTO);
+		}
+		public List<BookCommentDTO> getCommentList(Map<String, Object> map)throws Exception{
+			return sqlSession.selectList(NAMESPACE+"getCommentList", map);
+		}
 	
 	
 	

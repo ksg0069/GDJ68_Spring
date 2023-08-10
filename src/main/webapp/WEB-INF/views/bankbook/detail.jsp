@@ -67,7 +67,7 @@
 		</div>
 
 		<div id="commentList">
-			<table>
+			<table class="table-light">
 				
 
 			</table>
@@ -111,6 +111,26 @@
 
 
 	<script type="text/javascript">
+	
+	getCommentList($("#add").attr("data-add-num"), 1)
+
+	function getCommentList(bookNum, page){
+		$.ajax({
+			type:"get",
+			url: "./commentList",
+			data:{
+				bookNum:bookNum,
+				page:page
+			},
+			success:function(result){
+				$("#commentList").append(result);
+			},
+			error:function(){
+				alert("관리자에게 문의")
+			}
+		});
+	}
+	
 		//  const add =document.getElementById("add");
 
 		//  add.addEventListener("click", function(){
@@ -181,7 +201,7 @@
 
 
 
-		 function ajax1(bookNum, pw){
+	/* 	 function ajax1(bookNum, pw){
 			//1. 
 			let xhttp = new XMLHttpRequest();
 
@@ -212,7 +232,7 @@
 				location.href="../";
 			}
 			}
-		 }
+		 } */
 	</script>
 	
 
