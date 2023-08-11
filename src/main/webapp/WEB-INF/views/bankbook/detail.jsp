@@ -66,11 +66,14 @@
 			<button id ="commentAdd">댓글등록</button>
 		</div>
 
-		<div id="commentList">
-			<table class="table-light">
+		<div>
+			<table id="commentList" class="table-light">
 				
-
 			</table>
+
+			<div id="more">
+
+			</div>
 
 
 		</div>
@@ -112,18 +115,73 @@
 
 	<script type="text/javascript">
 	
-	getCommentList($("#add").attr("data-add-num"), 1)
+	let bn = $("#add").attr("data-add-num");
+	let pageNum=1;
+	let totalPage =0;
 
-	function getCommentList(bookNum, page){
+	
+	$("#commentAdd").click(function(){
+
+		let contents = $("#comment").val();
+
+		$.ajax({
+			type:"POST",
+			url:"./commentAdd",
+			data:{
+				bookNum:bn,
+				commentContents:contents,
+
+			},
+			success:function(result){
+
+				if(result.trim()>0){
+					alert("ok");
+					$("#commentList").empty();
+					$("#comment").val("");
+					
+					pageNum=1;
+					getCommentList(bn,1);
+				}
+
+
+			}
+		});
+		
+	})
+
+	$("#more").on("click","#moreBtn", function(){
+		
+
+		if(pageNum>=totalPage){
+			alert('마지막페이지')
+			return;
+		}
+
+		pageNum++;
+		getCommentList(bn,pageNum);
+		
+
+		})
+
+	getCommentList(bn, pageNum)
+
+	function getCommentList(bn, page){
 		$.ajax({
 			type:"get",
 			url: "./commentList",
 			data:{
-				bookNum:bookNum,
+				bookNum:bn,
 				page:page
 			},
 			success:function(result){
+				
 				$("#commentList").append(result);
+				
+				totalPage= $("#totalPage").attr("data-totalPage");
+				let button = '<button id="moreBtn">더보기('+pageNum+'/'+totalPage+')</button>'
+				$("#more").html(button);
+
+		
 			},
 			error:function(){
 				alert("관리자에게 문의")

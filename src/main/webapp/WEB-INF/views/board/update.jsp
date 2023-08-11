@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/bootstrap.jsp"></c:import>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -31,8 +33,8 @@
 			</div>
 			
 			<div class="mb-3">
-			<label for="nContents" class="form-label">본문</label>
-			<textarea rows="" cols="" class="form-control" id="nContents" name="contents" >${dto.contents}</textarea>
+			<label for="contents" class="form-label">본문</label>
+			<textarea rows="" cols="" class="form-control" id="contents" name="contents" >${dto.contents}</textarea>
 			</div>
 
 			<div class="mb-3">
@@ -60,5 +62,9 @@
 	</section>	
 		
 		<script type="text/javascript" src="../resources/js/file.js"></script>
+		<script>
+			// $("#contents").summernote('code',"기존내용");
+			$("#contents").summernote();
+		</script>
 </body>
 </html>

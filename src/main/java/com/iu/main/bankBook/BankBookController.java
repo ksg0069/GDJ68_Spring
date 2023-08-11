@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.main.bookComment.BookCommentDTO;
+import com.iu.main.member.MemberDTO;
 import com.iu.main.util.Pager;
 
 @Controller
@@ -28,8 +30,21 @@ public class BankBookController {
 	//--- comment
 	@GetMapping("commentList")
 	public void getCommentList(BookCommentDTO bookCommentDTO, Pager pager, Model model)throws Exception{
+		pager.setPerPage(3L);
 		List<BookCommentDTO> ar = bankBookService.getCommentList(pager, bookCommentDTO);
+		model.addAttribute("pager",pager);
 		model.addAttribute("commentList", ar);
+	}
+	
+	@PostMapping("commentAdd")
+	public String setCommentAdd(BookCommentDTO bookCommentDTO,HttpSession session,Model model)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		bookCommentDTO.setId(memberDTO.getId());
+		int result = bankBookService.setCommentAdd(bookCommentDTO);
+		
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
 	}
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)

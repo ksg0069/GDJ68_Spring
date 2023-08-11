@@ -21,7 +21,8 @@
 					<td> ${d.createDate}</td>
 					
 	 			</tr>
-	 	
+	 		
+	 			
 								
 			</c:forEach>	
 	

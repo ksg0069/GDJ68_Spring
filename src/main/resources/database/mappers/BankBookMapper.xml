@@ -7,11 +7,19 @@
   <mapper namespace="com.iu.main.bankBook.BankBookDAO"> <!-- dao의 클래스명으로 적음 풀패키지명으로 적음, 마음대로 적어도 됨 --> 
   
   <!-- Comment -->
+  <!-- insert -->
+  <insert id="setCommentAdd" parameterType="BookCommentDTO">
+  	INSERT INTO BOOKCOMMENT(COMMENTNUM,BOOKNUM,ID,COMMENTCONTENTS,COMMENTDATE) 
+  	VALUES(BC_SEQ.NEXTVAL, #{bookNum},#{id},#{commentContents}, sysdate)
+  
+  </insert>
+  <!--total  -->
   	<select id="getCommentTotal" resultType="Long" parameterType="BookCommentDTO">
   		SELECT COUNT(COMMENTNUM) FROM BOOKCOMMENT
   		WHERE BOOKNUM = #{bookNum}
   	</select>
   	
+  <!-- list -->
   	<select id="getCommentList" resultType="BookCommentDTO" parameterType="Map">
   		SELECT * FROM 
   		(SELECT ROWNUM R, C.* FROM
@@ -20,6 +28,9 @@
   		 ORDER BY COMMENTNUM DESC)C)
   		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   	</select>
+  
+  
+  <!--==========================================================================================  -->
     
   <!-- BANKBOOK -->
   	<sql id="searchSql">

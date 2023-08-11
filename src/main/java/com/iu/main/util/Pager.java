@@ -15,7 +15,8 @@ public class Pager {
 	private Long StartRow;
 	private Long lastRow;
 	
-	private Long page;
+	private Long page;// 현재페이지
+	
 	//한페이지에 보여질 data(row)의 갯수
 	private Long perPage;
 	

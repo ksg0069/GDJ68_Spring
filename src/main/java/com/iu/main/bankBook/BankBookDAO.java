@@ -24,6 +24,13 @@ public class BankBookDAO {
 	
 	
 	//------- Comment
+	
+	//insert
+	public int setCommentAdd(BookCommentDTO bookCommentDTO)throws Exception{
+	
+		return sqlSession.insert(NAMESPACE+"setCommentAdd",bookCommentDTO);
+	}
+	
 		public long getCommentTotal(BookCommentDTO bookCommentDTO)throws Exception{
 			return sqlSession.selectOne(NAMESPACE+"getCommentTotal", bookCommentDTO);
 		}

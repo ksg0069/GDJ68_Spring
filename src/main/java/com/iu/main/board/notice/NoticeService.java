@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.main.board.BoardDTO;
 import com.iu.main.board.BoardService;
+import com.iu.main.file.FileDTO;
 import com.iu.main.util.FileManger;
 import com.iu.main.util.Pager;
 
@@ -22,7 +23,29 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManger fileManger;
 
+	//imgdel
+	public boolean setContentsImgDelete(String path, HttpSession session)throws Exception{
+		//path : /resources/upload/notice/파일명
+		System.out.println("service");
+		FileDTO fileDTO = new FileDTO();
+		
+		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
+//		path = path.substring(0,path.lastIndexOf("/")+1);
+		path = "/resources/upload/notice/";
+		System.out.println(path);
+		return fileManger.fileDelete(fileDTO, path, session);
+		
+		
+	}
 	
+	
+	//imgup
+	public String setContentsImg(MultipartFile file, HttpSession session)throws Exception {
+		String path= "/resources/upload/notice/";
+		String fileName = fileManger.fileSave(path, file, session);
+		return path+fileName;
+		
+	}
 	
 
 	

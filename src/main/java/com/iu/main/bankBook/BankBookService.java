@@ -26,6 +26,8 @@ public class BankBookService {
 	
 	//--- Comment
 	
+
+	
 		public List<BookCommentDTO> getCommentList(Pager pager, BookCommentDTO bookCommentDTO)throws Exception{
 			Map<String, Object> map = new HashMap<String, Object>();
 			pager.makeRowNum();
@@ -34,6 +36,11 @@ public class BankBookService {
 			map.put("comment", bookCommentDTO);
 			
 			return bankBookDAO.getCommentList(map);
+		}
+		
+		public int setCommentAdd(BookCommentDTO bookCommentDTO)throws Exception{
+		
+			return bankBookDAO.setCommentAdd(bookCommentDTO);
 		}
 	
 	public List<BankBookDTO> getList(Pager pager)throws Exception{
