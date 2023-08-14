@@ -105,14 +105,14 @@
 	 <!-- update  -->
 	 
 	 <update id="setUpdate" parameterType="QnaDTO">
-	 	UPDATE QNA SET SUBJECT=#{subject}, CONTENTS=#{contents} WHERE NUM=#{num} 
+	 	UPDATE QNA SET SUBJECT=#{subject}, CONTENTS=#{contents} WHERE NUM=#{num}
 	 </update>
 	 <!-- delete -->
 	 
 	
 	 
 	  <delete id="setDelete" parameterType="QnaDTO">
- 		DELETE FROM QNA WHERE num= #{num}
+ 		DELETE FROM QNA WHERE num= #{num} 
  	</delete>
   </mapper>
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,12 @@
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<c:if test="${empty member }">
+	<script type="text/javascript">
+		alert("로그인하세요");
+		location.href="../member/login";
+	</script>
+</c:if>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>

@@ -15,6 +15,7 @@
  	
  	<typeAlias type="com.iu.main.member.MemberDTO" alias="MemberDTO"/>
  	<typeAlias type="com.iu.main.member.MemberFileDTO" alias="MemberFileDTO"/>
+ 	<typeAlias type="com.iu.main.member.RoleDTO" alias="RoleDTO"/>
  	
  	<typeAlias type="com.iu.main.bankBook.BankBookDTO" alias="BankBookDTO"/>
  	<typeAlias type="com.iu.main.bankBook.BankBookFileDTO" alias="BankBookFileDTO"/>
@@ -26,6 +27,7 @@
  	
  	<typeAlias type="com.iu.main.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
  	<typeAlias type="com.iu.main.board.qna.QnaDTO" alias="QnaDTO"/>
+ 	
  	
  	
  	

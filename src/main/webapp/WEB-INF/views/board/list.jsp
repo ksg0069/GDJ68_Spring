@@ -87,9 +87,9 @@
 	  	</div>
 		</div>
 		</form>	
-	
+	<c:if test="${not empty member}">
 	<a class="btn btn-danger" href="./add"> 글등록 </a>
-	
+	</c:if>
 	
 	
 	<script src="/resources/js/list.js"></script>

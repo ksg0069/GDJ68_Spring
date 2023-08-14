@@ -87,7 +87,7 @@ public class QnaController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String setUpdate(QnaDTO qnaDTO, Model model)throws Exception{
 		BoardDTO boardDTO = qnaService.getDetail(qnaDTO);
-		model.addAttribute("dto",qnaDTO);
+		model.addAttribute("dto", boardDTO);
 		
 		return "board/update";
 	}

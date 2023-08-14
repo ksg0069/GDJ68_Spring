@@ -22,6 +22,69 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- interceptor 설정  -->
+	<beans:bean class="com.iu.main.interceptors.InterceptorTest1" id="interceptorTest1"></beans:bean>
+	
+	<!-- admin -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/notice/add"/>
+			<mapping path="notice/update"/>
+			<mapping path="notice/delete"/>
+			
+			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
+	<!-- 로그인유무  -->
+	 <interceptors>
+ 		<interceptor>
+ 			<mapping path="/qna/*"/>
+ 			<mapping path="/member/*"/>
+ 			<mapping path="/notice/*"/>
+ 			
+ 			<exclude-mapping path="/notice/list"/>
+ 			<exclude-mapping path="/notice/detail"/>
+ 			<exclude-mapping path="/member/login"/>
+ 			<exclude-mapping path="/member/join"/>
+ 			<exclude-mapping path="/member/logout"/>
+ 			<exclude-mapping path="/qna/list"/>
+ 			<beans:ref bean="li"/>
+ 		</interceptor>
+ 	</interceptors>
+ 	
+ 	<!-- 작성자 맞냐?  -->
+ 	<interceptors>
+ 		<interceptor>
+ 			<mapping path="/notice/update"/>
+ 			<mapping path="/qna/update"/>
+ 			<beans:bean class="com.iu.main.interceptors.OwnerInterceptor"></beans:bean>
+ 		</interceptor>
+ 	</interceptors>
+ 	
+	<!-- <interceptors>
+		<interceptor>
+			<mapping path="/notice/*"/>
+			<exclude-mapping path="/notice/add"/> add만 제외하고
+			<beans:ref bean="interceptorTest1"/>
+		</interceptor>		
+
+ 	<interceptor>
+ 		<mapping path="/notice/*"/>
+ 		<beans:bean class="com.iu.main.interceptors.InterceptorTest1"></beans:bean>
+ 	</interceptor>	
+ 
+ 	<interceptor>
+ 		<mapping path="/notice/*"/>
+ 		<mapping path="/qna/*"/>
+ 		<beans:ref bean="interceptorTest1"/>
+ 	</interceptor>
+ 	
+ 	</interceptors> -->
+ 	
+
+	
 	<context:component-scan base-package="com.iu.main" />
 	<!--어노테이션 스캔 범위  -->
 	
