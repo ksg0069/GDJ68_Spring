@@ -28,9 +28,18 @@ public class NoticeController {
 	
 	@ModelAttribute("board") //reuestmapping 실행되기전에 실행되서 모델에다가 이름은:board value:notice
 	public String getBoardName() {
-		return "NOTICE";
+		return "notice";
 	}
 	
+	//fileDown
+	@GetMapping("fileDown")
+	public String getFiledown(NoticeFileDTO noticeFileDTO, Model model)throws Exception{
+		noticeFileDTO = noticeService.getFileDown(noticeFileDTO);
+		model.addAttribute("file", noticeFileDTO);
+		
+		return "fileManger";
+		
+	}
 	//imgdel
 	@PostMapping("setContentsImgDelete")
 	public String setContentsImgDelete(String path, HttpSession session,Model model)throws Exception{

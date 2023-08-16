@@ -108,7 +108,7 @@
  	</delete>
  	
  	<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
- 		SELECT FILENUM, FILENAME
+ 		SELECT FILENUM, FILENAME, ORIGINALNAME
  		FROM NOTICEFILE
  		WHERE FILENUM=#{fileNum}	
  		

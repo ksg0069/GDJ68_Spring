@@ -22,6 +22,13 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private FileManger fileManger;
+	
+	//fileDown
+	public NoticeFileDTO getFileDown(NoticeFileDTO noticeFileDTO)throws Exception{
+		
+		return noticeDAO.getFileDetail(noticeFileDTO);
+				
+	}
 
 	//imgdel
 	public boolean setContentsImgDelete(String path, HttpSession session)throws Exception{
@@ -61,7 +68,7 @@ public class NoticeService implements BoardService{
 	//add
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception{
 		
-		String path = "/resources/upload/board/";
+		String path = "/resources/upload/notice/";
 		
 		int result = noticeDAO.setAdd(boardDTO);
 		
@@ -90,7 +97,7 @@ public class NoticeService implements BoardService{
 	
 	//update
 	public int setUpdate(BoardDTO boardDTO,MultipartFile[] files,HttpSession session )throws Exception{
-		String path = "/resources/upload/board/";
+		String path = "/resources/upload/notice/";
 		
 		int result = noticeDAO.setUpdate(boardDTO);
 		
@@ -124,7 +131,7 @@ public class NoticeService implements BoardService{
 	public int setFileDelete(NoticeFileDTO noticeFileDTO, HttpSession session)throws Exception{
 		//폴더 파일 삭제
 		noticeFileDTO = noticeDAO.getFileDetail(noticeFileDTO);
-		boolean flag = fileManger.fileDelete(noticeFileDTO, "/resources/upload/board",session );
+		boolean flag = fileManger.fileDelete(noticeFileDTO, "/resources/upload/notice",session );
 		if(flag) {
 			return noticeDAO.setFileDelete(noticeFileDTO); //de 삭제
 		}

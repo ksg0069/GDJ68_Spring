@@ -20,13 +20,21 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
 	
+	<!-- fileDown -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"></beans:property>
+		
+	</beans:bean>
+	
+	
 	<!-- interceptor 설정  -->
-	<beans:bean class="com.iu.main.interceptors.InterceptorTest1" id="interceptorTest1"></beans:bean>
+	<!-- <beans:bean class="com.iu.main.interceptors.InterceptorTest1" id="interceptorTest1"></beans:bean> -->
 	
 	<!-- admin -->
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/notice/add"/>
 			<mapping path="notice/update"/>
@@ -37,7 +45,7 @@
 	</interceptors>
 	
 	
-	<!-- 로그인유무  -->
+	로그인유무 
 	 <interceptors>
  		<interceptor>
  			<mapping path="/qna/*"/>
@@ -54,14 +62,14 @@
  		</interceptor>
  	</interceptors>
  	
- 	<!-- 작성자 맞냐?  -->
+ 	작성자 맞냐? 
  	<interceptors>
  		<interceptor>
  			<mapping path="/notice/update"/>
  			<mapping path="/qna/update"/>
  			<beans:bean class="com.iu.main.interceptors.OwnerInterceptor"></beans:bean>
  		</interceptor>
- 	</interceptors>
+ 	</interceptors> -->
  	
 	<!-- <interceptors>
 		<interceptor>
