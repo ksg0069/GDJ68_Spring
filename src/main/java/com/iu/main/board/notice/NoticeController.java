@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -147,6 +148,24 @@ public class NoticeController {
 		return "commons/ajaxResult";
 		
 	}
+	
+	
+	///-----------------------------------Exception------------------------------------------------------
+	
+//	@ExceptionHandler(NullPointerException.class)
+//	public String serverError()throws Exception{
+//		
+//		return "view name";
+//	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public String severError2(Exception exception, Model model)throws Exception{
+//		
+//		String ex = exception.getMessage();
+//		model.addAttribute("ex",ex );
+//		
+//		return "view name";
+//	}
 	
 	
 	

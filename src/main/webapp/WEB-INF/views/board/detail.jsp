@@ -46,7 +46,7 @@
 		
 			</td>
 			
-		</tr>aaaaaaaaaaaaaaaaaaQQQQQQQQQQQQ
+		</tr>
 	
 		</tfoot>
 
